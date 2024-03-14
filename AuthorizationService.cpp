@@ -3,7 +3,7 @@
 
 bool AuthorizationService::registerUser(User user)
 {
-	user.setIsAdmin(false);
+	user.setIsAdmin(true);
 	if (!_model.ContainsLogin(user.getLogin()))
 	{
 		_model.addItem(user);

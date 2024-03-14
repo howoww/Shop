@@ -1,5 +1,6 @@
 #include "MainController.h"
-
+#include "Product.h"
+#include "string"
 void MainController::DisplayAdminMenu()
 {
 	menu = MenuView("Главное меню", std::vector<MenuView>{
@@ -9,11 +10,10 @@ void MainController::DisplayAdminMenu()
 				MenuView("Изменть пользователя", [&]() {userController.editUser(); }),
 				MenuView("Удалить пользователя", [&]() {userController.deleteUser(); }),
 				MenuView("Сортировка", std::vector<MenuView>{
-				MenuView("Сортировать по ID", []() {}),
-					MenuView("Сортировать по имени", []() {}),
-					MenuView("Сортировать по логину", []() {})
+				MenuView("Сортировать по ID", [&]() {userController.sort<int>(&User::getId); }),
+					MenuView("Сортировать по имени", [&]() {userController.sort<std::string>(&User::getName); }),
+					MenuView("Сортировать по логину", [&]() {userController.sort<std::string>(&User::getLogin); })
 			})
-				
 		}),
 			MenuView("Товары", std::vector<MenuView>{
 			MenuView("Список товаров", [&]() {productController.displayProducts(); system("pause"); }),
@@ -21,11 +21,11 @@ void MainController::DisplayAdminMenu()
 				MenuView("Изменть товар", [&]() {productController.editProduct(); }),
 				MenuView("Удалить товар", [&]() {productController.deleteProduct(); }),
 				MenuView("Сортировка", std::vector<MenuView>{
-				MenuView("Сортировать по ID", []() {}),
-					MenuView("Сортировать по наименованию", []() {}),
-					MenuView("Сортировать по категории", []() {}),
-					MenuView("Сортировать по марке", []() {}),
-					MenuView("Сортировать по цене", []() {})
+				MenuView("Сортировать по ID", [&]() { productController.sort<int>(&Product::getId); }),
+					MenuView("Сортировать по наименованию", [&]() {productController.sort<std::string>(&Product::getName); }),
+					MenuView("Сортировать по категории", [&]() {productController.sort<std::string>(&Product::getCategory); }),
+					MenuView("Сортировать по марке", [&]() {productController.sort<std::string>(&Product::getMark); }),
+					MenuView("Сортировать по цене", [&]() {productController.sort<double>(&Product::getCost); })
 			})
 		}),
 			MenuView("Выйти из аккаунта", [&]() { userController.deauthorizeUser(); Display(); })});
@@ -34,13 +34,13 @@ void MainController::DisplayAdminMenu()
 void MainController::DisplayUserMenu()
 {
 	menu = MenuView("Главное меню", std::vector<MenuView>{
-		MenuView("Список товаров", []() {}),
+		MenuView("Список товаров", [&]() {productController.displayProducts(); system("pause"); }),
 			MenuView("Сортировка", std::vector<MenuView>{
-			MenuView("Сортировать по ID", []() {}),
-				MenuView("Сортировать по наименованию", []() {}),
-				MenuView("Сортировать по категории", []() {}),
-				MenuView("Сортировать по марке", []() {}),
-				MenuView("Сортировать по цене", []() {})
+			MenuView("Сортировать по ID", [&]() {productController.sort<int>(&Product::getId); }),
+				MenuView("Сортировать по наименованию", [&]() {productController.sort<std::string>(&Product::getName); }),
+				MenuView("Сортировать по категории", [&]() {productController.sort<std::string>(&Product::getCategory); }),
+				MenuView("Сортировать по марке", [&]() {productController.sort<std::string>(&Product::getMark); }),
+				MenuView("Сортировать по цене", [&]() {productController.sort<double>(&Product::getCost); })
 		}),
 			MenuView("Выйти из аккаунта", [&]() { userController.deauthorizeUser(); Display(); })});
 }

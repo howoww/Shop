@@ -8,8 +8,6 @@ private:
 	double _cost;
 	std::string _mark;
 	std::string _category;
-	friend class ProductService;
-
 public:
 	Product();
 	Product(std::string name, double cost, std::string mark, std::string category);

@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="AuthorizationService.h" />
     <ClInclude Include="ConsoleInputView.h" />
+    <ClInclude Include="DomainComparator.h" />
     <ClInclude Include="IDomain.h" />
     <ClInclude Include="IRepository.h" />
     <ClInclude Include="MainController.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AuthorizationService.cpp" />
     <ClCompile Include="ConsoleInputView.cpp" />
+    <ClCompile Include="DomainComparator.cpp" />
     <ClCompile Include="IDomain.cpp" />
     <ClCompile Include="IRepository.cpp" />
     <ClCompile Include="MainController.cpp" />

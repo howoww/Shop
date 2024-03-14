@@ -32,6 +32,12 @@
     <Filter Include="View\Headers">
       <UniqueIdentifier>{99d91f88-ea47-4cea-b1ff-d6f43688fde5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Model\Comparators">
+      <UniqueIdentifier>{02b2c0fe-c858-4115-9868-89786c4f4d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services">
+      <UniqueIdentifier>{5865b296-9201-420b-8fef-92d38835c89d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Product.h">
@@ -61,14 +67,17 @@
     <ClInclude Include="ConsoleInputView.h">
       <Filter>View\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="AuthorizationService.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="MainController.h">
       <Filter>Controllers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="UserController.h">
       <Filter>Controllers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DomainComparator.h">
+      <Filter>Model\Comparators</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthorizationService.h">
+      <Filter>Model\Services</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -105,14 +114,17 @@
     <ClCompile Include="ConsoleInputView.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="AuthorizationService.cpp">
-      <Filter>Model</Filter>
-    </ClCompile>
     <ClCompile Include="MainController.cpp">
       <Filter>Controllers</Filter>
     </ClCompile>
     <ClCompile Include="UserController.cpp">
       <Filter>Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="DomainComparator.cpp">
+      <Filter>Model\Comparators</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthorizationService.cpp">
+      <Filter>Model\Services</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

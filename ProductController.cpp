@@ -15,7 +15,6 @@ void ProductController::addProduct()
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
-
 void ProductController::editProduct()
 {
 	char choice = 'n';
@@ -36,15 +35,14 @@ void ProductController::editProduct()
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
-
 void ProductController::deleteProduct()
 {
 	char choice = 'n';
 	do {
 		int id;
 		id = _input.inputValue<int>("Введите ID товара:");
-		std::string choice = _input.inputString("Вы уверены?(y - Да,n - Нет):");
-		if (choice == "y" || choice == "Y")
+		std::string isDelete = _input.inputString("Вы уверены?(y - Да,n - Нет):");
+		if (isDelete == "y" || isDelete == "Y")
 			if (!_model.deleteItemById(id))
 				_input.printColoredText("Товара с веденным ID не существует.", ConsoleInputView::Colors::Red);
 			else
@@ -53,9 +51,11 @@ void ProductController::deleteProduct()
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
-
 void ProductController::displayProducts()
 {
 	_model.displayProducts();
 }
+
+
+
 

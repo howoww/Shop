@@ -20,5 +20,15 @@ public:
 	void deauthorizeUser();
 	bool isLoggedIn();
 	bool isAdmin();
+	template<typename Type>
+	void sort(Type(User::* field)());
 };
 
+template<typename Type>
+void UserController::sort(Type(User::* field)())
+{
+	char choice = _input.inputString("Сортировать по возрастанию?(y - Да,n - Нет):")[0];
+	_model.sort(choice == 'y' || choice == 'Y', DomainComparator<User, Type>(field));
+	displayUsers();
+	system("pause");
+}

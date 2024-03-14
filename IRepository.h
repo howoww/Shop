@@ -1,7 +1,9 @@
 #pragma once
 #include "IDomain.h"
 #include <vector>
-template <class IDomain> 
+#include <algorithm>
+#include "DomainComparator.h"
+template <class IDomain>
 class IRepository
 {
 protected:
@@ -10,6 +12,8 @@ public:
 	virtual void addItem(IDomain item);
 	virtual bool deleteItemById(int id);
 	virtual IDomain* getItemById(int id);
+	template<typename Type>
+	void sort(bool isAscending, DomainComparator<IDomain, Type> comparator);
 };
 
 template<class IDomain>
@@ -39,4 +43,13 @@ IDomain* IRepository<IDomain>::getItemById(int id)
 	for (int i = 0; i < _items.size(); i++)
 		if (_items[i].getId() == id) return &_items[i];
 	return NULL;
+}
+
+template<class IDomain>
+template<typename Type>
+void IRepository<IDomain>::sort(bool isAscending, DomainComparator<IDomain, Type> comparator)
+{
+	isAscending ?
+		std::sort(_items.begin(), _items.end(), comparator) :
+		std::sort(_items.rbegin(), _items.rend(), comparator);
 }
