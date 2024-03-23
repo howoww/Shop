@@ -1,22 +1,16 @@
 #pragma once
 #include <functional>
-#include "ConsoleInputView.h"
+#include "ConsoleView.h"
 class MenuView {
 private:
 	std::string _lable;
 	std::vector<MenuView> _menus;
 	std::function<void()> _action;
-	ConsoleInputView _input;
+	ConsoleView _view;
 	void printMenu();
 public:
-	MenuView();
-	MenuView(std::string lable, std::function<void()> function) : _action(function) {
-		_lable = lable;
-	};
+	MenuView(std::string lable, std::function<void()> function);
 	MenuView(std::string lable,  std::vector<MenuView> menus);
+	MenuView();
 	void execute();
-
-	std::string getLable();
-
-    
 };

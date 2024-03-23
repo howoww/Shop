@@ -130,38 +130,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AuthorizationService.h" />
-    <ClInclude Include="ConsoleInputView.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="AuthorizationController.h" />
+    <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="DomainComparator.h" />
     <ClInclude Include="IDomain.h" />
-    <ClInclude Include="IRepository.h" />
-    <ClInclude Include="MainController.h" />
+    <ClInclude Include="DomainRepository.h" />
     <ClInclude Include="MenuView.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="ProductController.h" />
     <ClInclude Include="ProductRepository.h" />
+    <ClInclude Include="SerializationService.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserController.h" />
     <ClInclude Include="UserRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="AuthorizationService.cpp" />
-    <ClCompile Include="ConsoleInputView.cpp" />
-    <ClCompile Include="DomainComparator.cpp" />
+    <ClCompile Include="AuthorizationController.cpp" />
+    <ClCompile Include="ConsoleView.cpp" />
     <ClCompile Include="IDomain.cpp" />
-    <ClCompile Include="IRepository.cpp" />
-    <ClCompile Include="MainController.cpp" />
     <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="ProductController.cpp" />
     <ClCompile Include="ProductRepository.cpp" />
-    <ClCompile Include="ProductService.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserController.cpp" />
     <ClCompile Include="UserRepository.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

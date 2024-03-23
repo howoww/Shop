@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "sstream"
-class ConsoleInputView
+class ConsoleView
 {
 public:
 	enum class Colors {
@@ -25,7 +25,7 @@ public:
 };
 
 template<typename T>
-T ConsoleInputView::inputValue(std::string prompt)
+T ConsoleView::inputValue(std::string prompt)
 {
 	if ((!std::is_same<T, int>::value) && (!std::is_same<T, double>::value) && (!std::is_same<T, float>::value)) {
 		throw std::invalid_argument("Неверный тип. Поддерживается только double, float, int.");

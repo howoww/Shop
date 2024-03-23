@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "IDomain.h"
 class User : public IDomain
 {
@@ -9,8 +8,12 @@ private:
 	std::string _password;
 	bool _isAdmin;
 public:
+
+	//Конструкторы
 	User();
-	User(std::string name, std::string login, std::string password);
+	User(std::string name, std::string login, std::string password, bool isAdmin);
+
+	//Геттеры и сеттеры
 	std::string getName();
 	std::string getLogin();
 	std::string getPassword();
@@ -19,8 +22,15 @@ public:
 	void setPassword(std::string password);
 	void setIsAdmin(bool isAdmin);
 	bool getIsAdmin();
-	bool Equals(std::string login, std::string password);
+
+	//Вывод в консоль
 	void toConsole() override;
+
+	//Сравнение
+	bool Equals(std::string login, std::string password);
 	bool Equals(std::string login);
+
+	void serialize(std::ofstream& outFile) override;
+	void deserialize(std::ifstream& inFile) override;
 };
 

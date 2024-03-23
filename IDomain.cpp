@@ -1,10 +1,7 @@
 #include "IDomain.h"
 
 
-IDomain::IDomain()
-{
-	_id = 0;
-}
+IDomain::IDomain() :_id(0) {}
 
 int IDomain::getId()
 {
@@ -18,5 +15,15 @@ void IDomain::setId(int id)
 
 void IDomain::toConsole()
 {
-	std::cout << std::setw(5) << _id;
+	std::cout << std::left << std::setw(5) << _id;
+}
+
+void IDomain::serialize(std::ofstream& outFile)
+{
+	outFile.write((char*)&_id, sizeof(_id));
+}
+
+void IDomain::deserialize(std::ifstream& inFile)
+{
+	inFile.read((char*)&_id, sizeof(_id));
 }

@@ -1,7 +1,11 @@
 #pragma once
 #include <iomanip>
+#include <fstream>
+#include <vector>
+#include <string>
 #include <iostream>
-class IDomain
+#include <sstream>
+class IDomain 
 {
 private:
 	int _id;
@@ -10,5 +14,8 @@ public:
 	int getId();
 	void setId(int id);
 	virtual void toConsole();
+
+	virtual void serialize(std::ofstream& outFile);
+	virtual void deserialize(std::ifstream& inFile);
 };
 

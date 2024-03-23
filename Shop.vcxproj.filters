@@ -23,9 +23,6 @@
     <Filter Include="Controllers">
       <UniqueIdentifier>{400c2a74-946c-4942-87b2-418929498ebd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Controllers\Headers">
-      <UniqueIdentifier>{b553b6c8-b32d-4784-bf30-5f2aadbdd1d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="View">
       <UniqueIdentifier>{e952c260-79bb-406f-abac-eb3caa5a3d30}</UniqueIdentifier>
     </Filter>
@@ -38,6 +35,27 @@
     <Filter Include="Model\Services">
       <UniqueIdentifier>{5865b296-9201-420b-8fef-92d38835c89d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Model\Comparators\Headers">
+      <UniqueIdentifier>{b8f4bb19-bd99-4167-800d-74997b436023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services\Serialization">
+      <UniqueIdentifier>{2e75fd52-2cb6-4a59-826f-8d1b08bbd431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services\Serialization\Headers">
+      <UniqueIdentifier>{c4b6f24f-9815-4519-97f3-f6ddb520fa14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers\ModelsControllers">
+      <UniqueIdentifier>{83b62566-96a9-40cc-906b-f40ce24dcdcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers\ModelsControllers\Headers">
+      <UniqueIdentifier>{00e40301-8834-4729-9a0f-989bbf3ece95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers\Authorization">
+      <UniqueIdentifier>{73d6d92a-773e-4455-896e-82f06ac39dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers\Authorization\Headers">
+      <UniqueIdentifier>{c5f7b323-d3cf-4cbc-ba94-b5220b904dc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Product.h">
@@ -49,11 +67,8 @@
     <ClInclude Include="IDomain.h">
       <Filter>Model\Domains\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="IRepository.h">
+    <ClInclude Include="DomainRepository.h">
       <Filter>Model\Repository\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ProductController.h">
-      <Filter>Controllers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ProductRepository.h">
       <Filter>Model\Repository\Headers</Filter>
@@ -64,28 +79,31 @@
     <ClInclude Include="MenuView.h">
       <Filter>View\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleInputView.h">
+    <ClInclude Include="ConsoleView.h">
       <Filter>View\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MainController.h">
-      <Filter>Controllers\Headers</Filter>
+    <ClInclude Include="DomainComparator.h">
+      <Filter>Model\Comparators\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SerializationService.h">
+      <Filter>Model\Services\Serialization\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductController.h">
+      <Filter>Controllers\ModelsControllers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="UserController.h">
-      <Filter>Controllers\Headers</Filter>
+      <Filter>Controllers\ModelsControllers\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="DomainComparator.h">
-      <Filter>Model\Comparators</Filter>
+    <ClInclude Include="AuthorizationController.h">
+      <Filter>Controllers\Authorization\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="AuthorizationService.h">
-      <Filter>Model\Services</Filter>
+    <ClInclude Include="App.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductService.cpp">
-      <Filter>Controllers</Filter>
     </ClCompile>
     <ClCompile Include="IDomain.cpp">
       <Filter>Model\Domains</Filter>
@@ -96,12 +114,6 @@
     <ClCompile Include="User.cpp">
       <Filter>Model\Domains</Filter>
     </ClCompile>
-    <ClCompile Include="IRepository.cpp">
-      <Filter>Model\Repository</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductController.cpp">
-      <Filter>Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="UserRepository.cpp">
       <Filter>Model\Repository</Filter>
     </ClCompile>
@@ -111,20 +123,20 @@
     <ClCompile Include="MenuView.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleInputView.cpp">
+    <ClCompile Include="ConsoleView.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="MainController.cpp">
-      <Filter>Controllers</Filter>
+    <ClCompile Include="ProductController.cpp">
+      <Filter>Controllers\ModelsControllers</Filter>
     </ClCompile>
     <ClCompile Include="UserController.cpp">
-      <Filter>Controllers</Filter>
+      <Filter>Controllers\ModelsControllers</Filter>
     </ClCompile>
-    <ClCompile Include="DomainComparator.cpp">
-      <Filter>Model\Comparators</Filter>
+    <ClCompile Include="AuthorizationController.cpp">
+      <Filter>Controllers\Authorization</Filter>
     </ClCompile>
-    <ClCompile Include="AuthorizationService.cpp">
-      <Filter>Model\Services</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
