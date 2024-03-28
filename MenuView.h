@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include "ConsoleView.h"
+#include <vector>
 class MenuView {
 private:
 	std::string _lable;
