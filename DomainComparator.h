@@ -1,14 +1,14 @@
 #pragma once
-template<class IDomain, typename T>
+template<class Domain, typename T>
 class DomainComparator {
 public:
-	DomainComparator(T(IDomain::* getter)()) : getter(getter) {}
+	DomainComparator(T(Domain::* getter)()) : getter(getter) {}
 
-	bool operator()( IDomain& lhs, IDomain& rhs) {
+	bool operator()( Domain& lhs, Domain& rhs) {
 		return (lhs.*getter)() < (rhs.*getter)();
 	}
 
 private:
-	T(IDomain::* getter)();
+	T(Domain::* getter)();
 };
 

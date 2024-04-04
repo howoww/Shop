@@ -56,13 +56,13 @@ bool User::Equals(std::string login)
 
 void User::toConsole()
 {
-	IDomain::toConsole();
+	Domain::toConsole();
 	std::cout << std::setw(25) << _name << std::setw(20) << _login << std::setw(20) << _password << std::setw(10) << (_isAdmin ? "Администратор" : "Пользователь") << std::endl;
 }
 
 void User::serialize(std::ofstream& outFile)
 {
-	IDomain::serialize(outFile);
+	Domain::serialize(outFile);
 	//Name
 	size_t nameLength = _name.length();
 	outFile.write((char*)&nameLength, sizeof(nameLength));
@@ -82,7 +82,7 @@ void User::serialize(std::ofstream& outFile)
 
 void User::deserialize(std::ifstream& inFile)
 {
-	IDomain::deserialize(inFile);
+	Domain::deserialize(inFile);
 	//Name
 	size_t nameLength;
 	inFile.read((char*)&nameLength, sizeof(nameLength));

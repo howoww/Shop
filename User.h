@@ -1,6 +1,6 @@
 #pragma once
-#include "IDomain.h"
-class User : public IDomain
+#include "Domain.h"
+class User : public Domain
 {
 private:
 	std::string _name;

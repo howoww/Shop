@@ -64,7 +64,7 @@
     <ClInclude Include="User.h">
       <Filter>Model\Domains\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="IDomain.h">
+    <ClInclude Include="Domain.h">
       <Filter>Model\Domains\Headers</Filter>
     </ClInclude>
     <ClInclude Include="DomainRepository.h">
@@ -105,7 +105,7 @@
     <ClCompile Include="App.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="IDomain.cpp">
+    <ClCompile Include="Domain.cpp">
       <Filter>Model\Domains</Filter>
     </ClCompile>
     <ClCompile Include="Product.cpp">

@@ -44,13 +44,13 @@ void Product::setCategory(std::string category)
 
 void Product::toConsole()
 {
-	IDomain::toConsole();
+	Domain::toConsole();
 	std::cout << std::setw(25) << _name << std::setw(20) << _category << std::setw(20) << _mark << std::setw(10) << _cost << std::endl;
 }
 
 void Product::serialize(std::ofstream& outFile)
 {
-	IDomain::serialize(outFile);
+	Domain::serialize(outFile);
 	//Name
 	size_t nameLength = _name.length();
 	outFile.write((char*)&nameLength, sizeof(nameLength));
@@ -71,7 +71,7 @@ void Product::serialize(std::ofstream& outFile)
 
 void Product::deserialize(std::ifstream& inFile)
 {
-	IDomain::deserialize(inFile);
+	Domain::deserialize(inFile);
 	//Name
 	size_t nameLength;
 	inFile.read((char*)&nameLength, sizeof(nameLength));

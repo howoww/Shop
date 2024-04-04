@@ -1,27 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="IDomain">
-    <Position X="6.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAIAAAAAAAAAAACBAIAAAAAAAAAAAQAACAAAAAAA=</HashCode>
-      <FileName>IDomain.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Product">
-    <Position X="4.75" Y="4.75" Width="1.5" />
+    <Position X="4.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABECIIEIgCEABAAACCIAIAAAAAAAAABAQIAEAAAAAAA=</HashCode>
       <FileName>Product.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="User">
-    <Position X="8.25" Y="4.75" Width="1.5" />
+    <Position X="8.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQBIIAQAAEAAAEAgAAIIAACAAAAAABAQAAEIAAAIIA=</HashCode>
       <FileName>User.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DomainRepository&lt;IDomain&gt;">
+  <Class Name="DomainRepository&lt;Domain&gt;">
     <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAQAAECAAAAAEBAAAAAAiAAAAAAAAAA=</HashCode>
@@ -42,8 +35,8 @@
       <FileName>UserRepository.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DomainComparator&lt;IDomain, T&gt;">
-    <Position X="3" Y="3.75" Width="1.5" />
+  <Class Name="DomainComparator&lt;Domain, T&gt;">
+    <Position X="2.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAAAACAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DomainComparator.h</FileName>
@@ -96,6 +89,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEgAAAAAAIAAAAACACgCAAAAA=</HashCode>
       <FileName>MenuView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIAAAAAAAAAAACBAIAAAAgAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Domain.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Tahoma" Size="8.25" />

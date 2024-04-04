@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "IDomain.h"
+#include "Domain.h"
 class SerializationService
 {
 private:
@@ -10,13 +10,13 @@ private:
 public:
 	SerializationService(std::string filename) : _filename(filename) {
 	};
-	template <class IDomain>
-	void serializeRepository(std::vector<IDomain>& vector);
-	template <class IDomain>
-	void deserializeRepository(std::vector<IDomain>& vector);
+	template <class Domain>
+	void serializeRepository(std::vector<Domain>& vector);
+	template <class Domain>
+	void deserializeRepository(std::vector<Domain>& vector);
 };
-template <class IDomain>
-void SerializationService::serializeRepository(std::vector<IDomain>& vector)
+template <class Domain>
+void SerializationService::serializeRepository(std::vector<Domain>& vector)
 {
 	std::ofstream file(_filename, std::ios::binary);
 	if (file) {
@@ -37,8 +37,8 @@ void SerializationService::serializeRepository(std::vector<IDomain>& vector)
 		//Log ErrorCreateFile
 	}
 }
-template <class IDomain>
-void SerializationService::deserializeRepository(std::vector<IDomain>& vector)
+template <class Domain>
+void SerializationService::deserializeRepository(std::vector<Domain>& vector)
 {
 	std::ifstream file(_filename, std::ios::binary);
 	if (file) {
@@ -46,7 +46,7 @@ void SerializationService::deserializeRepository(std::vector<IDomain>& vector)
 		try {
 			file.read((char*)&count, sizeof(count));
 			for (size_t i = 0; i < count; i++) {
-				IDomain serializable;
+				Domain serializable;
 				serializable.deserialize(file);
 				vector.push_back(serializable);
 			}

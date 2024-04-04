@@ -134,7 +134,7 @@
     <ClInclude Include="AuthorizationController.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="DomainComparator.h" />
-    <ClInclude Include="IDomain.h" />
+    <ClInclude Include="Domain.h" />
     <ClInclude Include="DomainRepository.h" />
     <ClInclude Include="MenuView.h" />
     <ClInclude Include="Product.h" />
@@ -149,7 +149,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AuthorizationController.cpp" />
     <ClCompile Include="ConsoleView.cpp" />
-    <ClCompile Include="IDomain.cpp" />
+    <ClCompile Include="Domain.cpp" />
     <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="ProductController.cpp" />

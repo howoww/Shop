@@ -20,7 +20,8 @@ void MenuView::execute()
 		int select = -1;
 		if (this->_action == nullptr) {
 			while (select < 0 || select > this->_menus.size()) {
-				select = _view.inputValue<int>("Введите число (0 - Назад) << ");
+				select = _view.
+					inputValue<int>("Введите число (0 - Назад) << ");
 			}
 			select--;
 			if (select == -1) {

@@ -5,12 +5,12 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-class IDomain 
+class Domain 
 {
 private:
 	int _id;
 public:
-	IDomain();
+	Domain();
 	int getId();
 	void setId(int id);
 	virtual void toConsole();

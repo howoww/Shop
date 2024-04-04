@@ -1,7 +1,7 @@
 #pragma once
-#include "IDomain.h"
+#include "Domain.h"
 
-class Product : public IDomain
+class Product : public Domain
 {
 private:
 	std::string _name;

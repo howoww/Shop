@@ -11,10 +11,12 @@ void AuthorizationController::registerUser()
 	if (!_model->ContainsLogin(user.getLogin())) {
 		user.setIsAdmin(false);
 		_model->addItem(user);
-		_view->printColoredText("Вы успешно зарегистрировались.", ConsoleView::Colors::Green);
+		_view->printColoredText("Вы успешно зарегистрировались.",
+		ConsoleView::Colors::Green);
 	}
 	else
-		_view->printColoredText("Пользователь с таким логином уже зарегистрирован.", ConsoleView::Colors::Red);
+		_view->printColoredText("Пользователь с таким логином уже зарегистрирован.",
+		ConsoleView::Colors::Red);
 	system("pause");
 }
 
@@ -25,9 +27,11 @@ void AuthorizationController::authorizeUser()
 	password = _view->inputString("Введите свой пароль:");
 	_authorizedUser = _model->getUserForAuth(login, password);
 	if (_authorizedUser != nullptr)
-		_view->printColoredText("Здравствуйте " + _authorizedUser->getName(), ConsoleView::Colors::Magenta);
+		_view->printColoredText("Здравствуйте " + _authorizedUser->getName(),
+		ConsoleView::Colors::Magenta);
 	else
-		_view->printColoredText("Неверный логин или пароль.", ConsoleView::Colors::Red);
+		_view->printColoredText("Неверный логин или пароль.",
+		ConsoleView::Colors::Red);
 	system("pause");
 }
 
