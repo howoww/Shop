@@ -8,8 +8,7 @@ class SerializationService
 private:
 	std::string _filename;
 public:
-	SerializationService(std::string filename) : _filename(filename) {
-	};
+	SerializationService(std::string filename) : _filename(filename) {};
 	template <class Domain>
 	void serializeRepository(std::vector<Domain>& vector);
 	template <class Domain>

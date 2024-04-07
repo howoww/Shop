@@ -1,15 +1,5 @@
 #include "ProductRepository.h"
 
-void ProductRepository::displayProducts()
-{
-	std::cout << std::setw(5) << "ID" << std::setw(25) << "Наименование" << std::setw(20) << "Категория" << std::setw(20) << "Марка" << std::setw(10) << "Цена" << std::endl;
-	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
-	for (int i = 0; i < _items.size(); i++) {
-		_items[i].toConsole();
-	}
-}
-
-//Эти методы лучше вынести в отдельный класс, но я не буду
 bool ProductRepository::exportCsvProducts(std::string filepath)
 {
 	std::ofstream file(filepath);

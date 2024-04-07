@@ -29,14 +29,8 @@
     <Filter Include="View\Headers">
       <UniqueIdentifier>{99d91f88-ea47-4cea-b1ff-d6f43688fde5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Model\Comparators">
-      <UniqueIdentifier>{02b2c0fe-c858-4115-9868-89786c4f4d8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Model\Services">
       <UniqueIdentifier>{5865b296-9201-420b-8fef-92d38835c89d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Model\Comparators\Headers">
-      <UniqueIdentifier>{b8f4bb19-bd99-4167-800d-74997b436023}</UniqueIdentifier>
     </Filter>
     <Filter Include="Model\Services\Serialization">
       <UniqueIdentifier>{2e75fd52-2cb6-4a59-826f-8d1b08bbd431}</UniqueIdentifier>
@@ -81,9 +75,6 @@
     </ClInclude>
     <ClInclude Include="ConsoleView.h">
       <Filter>View\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="DomainComparator.h">
-      <Filter>Model\Comparators\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SerializationService.h">
       <Filter>Model\Services\Serialization\Headers</Filter>

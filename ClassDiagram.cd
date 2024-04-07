@@ -15,44 +15,37 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DomainRepository&lt;Domain&gt;">
-    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAQAAECAAAAAEBAAAAAAiAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAASAAAAAAQAAFCAAAAAEBAAAAAAgAAAAAIAAAA=</HashCode>
       <FileName>DomainRepository.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProductRepository">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+    <Position X="4.75" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAIAAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>ProductRepository.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UserRepository">
-    <Position X="9.5" Y="1.75" Width="1.5" />
+    <Position X="10.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAEAAAMAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>UserRepository.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DomainComparator&lt;Domain, T&gt;">
-    <Position X="2.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAACAAAAIAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DomainComparator.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SerializationService">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="2" Y="1.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAQAAAQAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SerializationService.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProductController">
-    <Position X="12.25" Y="5" Width="1.5" />
+    <Position X="12.25" Y="5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAQAAIAAgAQAAAAEEAAAAAAACAAIAABAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAQAgIAAgAQAAAAEEAAAAAAACAAIAABAAA=</HashCode>
       <FileName>ProductController.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,14 +57,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AuthorizationController">
-    <Position X="14" Y="5" Width="1.5" />
+    <Position X="15" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAEAAgAAAAAAAEAAAAgAACAAABAAEgA=</HashCode>
       <FileName>AuthorizationController.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleView">
-    <Position X="13.5" Y="2" Width="1.5" />
+    <Position X="15.5" Y="0.5" Width="3.25" />
     <NestedTypes>
       <Enum Name="ConsoleView::Colors" Collapsed="true">
         <TypeIdentifier>
@@ -85,7 +78,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MenuView">
-    <Position X="11.75" Y="1.75" Width="1.5" />
+    <Position X="13.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEgAAAAAAIAAAAACACgCAAAAA=</HashCode>
       <FileName>MenuView.h</FileName>

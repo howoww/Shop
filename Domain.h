@@ -13,8 +13,8 @@ public:
 	Domain();
 	int getId();
 	void setId(int id);
-	virtual void toConsole();
 
+	virtual void toConsole();
 	virtual void serialize(std::ofstream& outFile);
 	virtual void deserialize(std::ifstream& inFile);
 };
