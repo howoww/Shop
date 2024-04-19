@@ -1,8 +1,4 @@
 #include "Domain.h"
-
-
-Domain::Domain() :_id(0) {}
-
 int Domain::getId()
 {
 	return _id;

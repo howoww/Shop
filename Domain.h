@@ -10,9 +10,10 @@ class Domain
 private:
 	int _id;
 public:
-	Domain();
+	Domain() { _id = NULL; };
 	int getId();
 	void setId(int id);
+
 
 	virtual void toConsole();
 	virtual void serialize(std::ofstream& outFile);

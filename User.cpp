@@ -1,6 +1,6 @@
 #include "User.h"
 
-User::User() :_name(""), _login(""), _password(""), _isAdmin(false) {}
+User::User():_isAdmin(false) {}
 
 User::User(std::string name, std::string login, std::string password, bool isAdmin) :_name(name), _login(login), _password(password), _isAdmin(isAdmin) {}
 

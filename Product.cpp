@@ -1,6 +1,5 @@
 #include "Product.h"
-
-Product::Product() :_name(""), _cost(0), _mark(""), _category("") {}
+Product::Product() {}
 Product::Product(std::string name, double cost, std::string mark, std::string category) :_name(name), _cost(cost), _mark(mark), _category(category) {}
 std::string Product::getName()
 {

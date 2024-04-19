@@ -9,7 +9,6 @@ private:
 	std::string _mark;
 	std::string _category;
 public:
-	//Конструкторы
 	Product();
 	Product(std::string name, double cost, std::string mark, std::string category);
 
