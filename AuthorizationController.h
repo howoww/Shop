@@ -1,19 +1,22 @@
 #pragma once
 #include "UserRepository.h"
-#include "ConsoleView.h"
+#include "ConsoleIO.h"
+#include "MenuView.h"
+#include "AdminController.h"
+#include "DefaultUserController.h"
 class AuthorizationController
 {
 private:
-	UserRepository* _model;
-	ConsoleView _view; //View
-	User* _authorizedUser = nullptr;
+	UserRepository _userRepository;
+	MenuView _menuView;
+	bool _isLoggedIn = false;
+	bool _isAdmin = false;
 public:
-	AuthorizationController(UserRepository & model);
-	//Авторизация, деавторизация, регистрация
+	AuthorizationController();
+	~AuthorizationController();
 	void registerUser();
 	void authorizeUser();
-	void deauthorizeUser();
-	bool isLoggedIn();
-	bool isAdmin();
+	bool isAdmin() const;
+	bool isLoggedIn() const;
 };
 

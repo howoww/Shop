@@ -1,94 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Product">
-    <Position X="4.5" Y="4.75" Width="1.5" />
+  <Class Name="AdminController">
+    <Position X="9" Y="2" Width="6" />
     <TypeIdentifier>
-      <HashCode>ABECIIEIgCEABAAACCIAIAAAAAAAAABAQIAEAAAAAAA=</HashCode>
-      <FileName>Product.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="User">
-    <Position X="8.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQBIIAQAAEAAAEAgAAIIAACAAAAAABAQAAEIAAAIIA=</HashCode>
-      <FileName>User.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DomainRepository&lt;Domain&gt;">
-    <Position X="7.75" Y="0.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAASAAAAAAQAAFCAAAAAEBAAAAAAgAAAAAIAAAA=</HashCode>
-      <FileName>DomainRepository.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ProductRepository">
-    <Position X="4.75" Y="2" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
-      <FileName>ProductRepository.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UserRepository">
-    <Position X="10.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>UserRepository.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SerializationService">
-    <Position X="2" Y="1.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAQAAAQAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SerializationService.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ProductController">
-    <Position X="12.25" Y="5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAQAgIAAgAQAAAAEEAAAAAAACAAIAABAAA=</HashCode>
-      <FileName>ProductController.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UserController">
-    <Position X="10.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAgAAAAIAEAAAAAEAACAAIAAAAAQ=</HashCode>
-      <FileName>UserController.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AuthorizationController">
-    <Position X="15" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAEAAgAAAAAAAEAAAAgAACAAABAAEgA=</HashCode>
-      <FileName>AuthorizationController.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConsoleView">
-    <Position X="15.5" Y="0.5" Width="3.25" />
-    <NestedTypes>
-      <Enum Name="ConsoleView::Colors" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>ConsoleView.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAA=</HashCode>
-      <FileName>ConsoleView.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MenuView">
-    <Position X="13.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEgAAAAAAIAAAAACACgCAAAAA=</HashCode>
-      <FileName>MenuView.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Domain">
-    <Position X="6.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAIAAAAAAAAAAACBAIAAAAgAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>Domain.h</FileName>
+      <HashCode>AAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdminController.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Tahoma" Size="8.25" />

@@ -43,12 +43,12 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -121,6 +121,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,24 +132,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
+    <ClInclude Include="AdminController.h" />
     <ClInclude Include="AuthorizationController.h" />
-    <ClInclude Include="ConsoleView.h" />
+    <ClInclude Include="BinaryData.h" />
+    <ClInclude Include="ConsoleIO.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="CSVData.h" />
+    <ClInclude Include="CSVDataService.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="DefaultUserController.h" />
     <ClInclude Include="Domain.h" />
     <ClInclude Include="DomainRepository.h" />
     <ClInclude Include="MenuView.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="ProductController.h" />
     <ClInclude Include="ProductRepository.h" />
-    <ClInclude Include="SerializationService.h" />
+    <ClInclude Include="BinaryDataService.h" />
+    <ClInclude Include="StringExtension.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserController.h" />
     <ClInclude Include="UserRepository.h" />
+    <ClInclude Include="VectorExtension.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AuthorizationController.cpp" />
-    <ClCompile Include="ConsoleView.cpp" />
+    <ClCompile Include="ConsoleIO.cpp" />
     <ClCompile Include="Domain.cpp" />
     <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="Product.cpp" />

@@ -4,17 +4,17 @@ User::User():_isAdmin(false) {}
 
 User::User(std::string name, std::string login, std::string password, bool isAdmin) :_name(name), _login(login), _password(password), _isAdmin(isAdmin) {}
 
-std::string User::getName()
+std::string User::getName() const
 {
 	return _name;
 }
 
-std::string User::getLogin()
+std::string User::getLogin() const
 {
 	return _login;
 }
 
-std::string User::getPassword()
+std::string User::getPassword() const
 {
 	return _password;
 }
@@ -39,17 +39,17 @@ void User::setIsAdmin(bool isAdmin)
 	_isAdmin = isAdmin;
 }
 
-bool User::getIsAdmin()
+bool User::getIsAdmin() const
 {
 	return _isAdmin;
 }
 
-bool User::Equals(std::string login, std::string password)
+bool User::Equals(std::string login, std::string password) const
 {
 	return _login == login && _password == password;
 }
 
-bool User::Equals(std::string login)
+bool User::Equals(std::string login) const
 {
 	return _login == login;
 }
@@ -60,9 +60,9 @@ void User::toConsole()
 	std::cout << std::setw(25) << _name << std::setw(20) << _login << std::setw(20) << _password << std::setw(10) << (_isAdmin ? "Администратор" : "Пользователь") << std::endl;
 }
 
-void User::serialize(std::ofstream& outFile)
+void User::toBinary(std::ofstream& outFile) const
 {
-	Domain::serialize(outFile);
+	Domain::toBinary(outFile);
 	//Name
 	size_t nameLength = _name.length();
 	outFile.write((char*)&nameLength, sizeof(nameLength));
@@ -77,12 +77,11 @@ void User::serialize(std::ofstream& outFile)
 	outFile.write(_password.c_str(), passwordLength);
 	//IsAdmin
 	outFile.write((char*)&_isAdmin, sizeof(_isAdmin));
-
 }
 
-void User::deserialize(std::ifstream& inFile)
+void User::fromBinary(std::ifstream& inFile)
 {
-	Domain::deserialize(inFile);
+	Domain::fromBinary(inFile);
 	//Name
 	size_t nameLength;
 	inFile.read((char*)&nameLength, sizeof(nameLength));

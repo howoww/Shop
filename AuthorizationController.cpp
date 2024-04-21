@@ -1,52 +1,65 @@
 #include "AuthorizationController.h"
+AuthorizationController::AuthorizationController() :_userRepository("users"), _menuView("Авторизация", std::vector<MenuView>{
+	MenuView("Авторизоваться", [&]() {
+		authorizeUser();
+		if (isLoggedIn())
+			if (isAdmin())
+				AdminController adminController;
+			else
+				DefaultUserController userController;
+		}),
+		MenuView("Зарегистрироваться", [&]() {
+		registerUser(); })})
+{
+	_menuView.execute();
+}
 
-AuthorizationController::AuthorizationController(UserRepository& model) : _model(&model) {}
+AuthorizationController::~AuthorizationController()
+{
+	_userRepository.saveData();
+}
 
 void AuthorizationController::registerUser()
 {
-	User user;
-	user.setName(_view.inputString("Введите свое имя:"));
-	user.setLogin(_view.inputString("Введите свой логин:"));
-	user.setPassword(_view.inputString("Введите свой пароль:"));
-	if (!_model->ContainsLogin(user.getLogin())) {
-		user.setIsAdmin(false);
-		_model->addItem(user);
-		_model->saveData();
-		_view.printColoredText("Вы успешно зарегистрировались.",
-		ConsoleView::Colors::Green);
+	User user
+	(ConsoleIO::inputString("Введите свое имя:"),
+		ConsoleIO::inputString("Введите свой логин:"),
+		ConsoleIO::inputString("Введите свой пароль:"),
+		false);
+	try {
+		_userRepository.addItem(user);
+		_userRepository.saveData();
+		ConsoleIO::printTextWithColor("Вы успешно зарегистрировались.", ConsoleIO::Colors::Green);
 	}
-	else
-		_view.printColoredText("Пользователь с таким логином уже зарегистрирован.",
-		ConsoleView::Colors::Red);
+	catch (const std::exception& e) {
+		ConsoleIO::printError(e.what());
+	}
 	system("pause");
 }
 
 void AuthorizationController::authorizeUser()
 {
-	std::string login, password;
-	login = _view.inputString("Введите свой логин:");
-	password = _view.inputString("Введите свой пароль:");
-	_authorizedUser = _model->getUserForAuth(login, password);
-	if (_authorizedUser != nullptr)
-		_view.printColoredText("Здравствуйте " + _authorizedUser->getName(),
-		ConsoleView::Colors::Magenta);
-	else
-		_view.printColoredText("Неверный логин или пароль.",
-		ConsoleView::Colors::Red);
+	try {
+		User user =
+			_userRepository.getUserForAuth(
+				ConsoleIO::inputString("Введите свой логин:"),
+				ConsoleIO::inputString("Введите свой пароль:"));
+		_isAdmin = user.getIsAdmin();
+		_isLoggedIn = true;
+		ConsoleIO::printTextWithColor("Здравствуйте " + user.getName(), ConsoleIO::Colors::Magenta);
+	}
+	catch (const std::exception& e) {
+		ConsoleIO::printError(e.what());
+	}
 	system("pause");
 }
 
-void AuthorizationController::deauthorizeUser()
+bool AuthorizationController::isLoggedIn() const
 {
-	_authorizedUser = nullptr;
+	return _isLoggedIn;
 }
 
-bool AuthorizationController::isLoggedIn()
+bool AuthorizationController::isAdmin() const
 {
-	return _authorizedUser != nullptr;
-}
-
-bool AuthorizationController::isAdmin()
-{
-	return isLoggedIn() && _authorizedUser->getIsAdmin();
+	return _isAdmin;
 }

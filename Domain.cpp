@@ -1,5 +1,5 @@
 #include "Domain.h"
-int Domain::getId()
+int Domain::getId() const
 {
 	return _id;
 }
@@ -14,12 +14,12 @@ void Domain::toConsole()
 	std::cout << std::left << std::setw(5) << _id;
 }
 
-void Domain::serialize(std::ofstream& outFile)
+void Domain::toBinary(std::ofstream& outFile) const
 {
 	outFile.write((char*)&_id, sizeof(_id));
 }
 
-void Domain::deserialize(std::ifstream& inFile)
+void Domain::fromBinary(std::ifstream& inFile)
 {
 	inFile.read((char*)&_id, sizeof(_id));
 }

@@ -11,10 +11,10 @@ public:
 	User();
 	User(std::string name, std::string login, std::string password, bool isAdmin);
 
-	std::string getName();
-	std::string getLogin();
-	std::string getPassword();
-	bool getIsAdmin();
+	std::string getName() const;
+	std::string getLogin() const;
+	std::string getPassword() const;
+	bool getIsAdmin() const;
 	void setName(std::string name);
 	void setLogin(std::string login);
 	void setPassword(std::string password);
@@ -22,10 +22,11 @@ public:
 
 	void toConsole() override;
 
-	bool Equals(std::string login, std::string password);
-	bool Equals(std::string login);
+	bool Equals(std::string login, std::string password) const;
+	bool Equals(std::string login) const;
 
-	void serialize(std::ofstream& outFile) override;
-	void deserialize(std::ifstream& inFile) override;
+	// Унаследовано через BinaryData
+	void toBinary(std::ofstream& outFile) const override;
+	void fromBinary(std::ifstream& inFile) override;
 };
 

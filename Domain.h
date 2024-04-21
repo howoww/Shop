@@ -5,18 +5,21 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-class Domain 
+#include "BinaryData.h"
+class Domain : public BinaryData
 {
 private:
 	int _id;
 public:
 	Domain() { _id = NULL; };
-	int getId();
+	int getId() const;
 	void setId(int id);
 
-
 	virtual void toConsole();
-	virtual void serialize(std::ofstream& outFile);
-	virtual void deserialize(std::ifstream& inFile);
+
+	// Унаследовано через BinaryData
+	void toBinary(std::ofstream& outFile) const override;
+	void fromBinary(std::ifstream& inFile) override;
+
 };
 

@@ -1,7 +1,8 @@
 #pragma once
 #include "Domain.h"
-
-class Product : public Domain
+#include "CSVData.h"
+#include "StringExtension.h"
+class Product : public Domain, public CSVData
 {
 private:
 	std::string _name;
@@ -10,13 +11,13 @@ private:
 	std::string _category;
 public:
 	Product();
-	Product(std::string name, double cost, std::string mark, std::string category);
+	Product(std::string name,std::string category, std::string mark, double cost );
 
 	//Геттеры и сеттеры
-	std::string getName();
-	double getCost();
-	std::string getMark();
-	std::string getCategory();
+	std::string getName() const;
+	double getCost() const;
+	std::string getMark() const;
+	std::string getCategory() const;
 	void setName(std::string name);
 	void setCost(double cost);
 	void setMark(std::string mark);
@@ -25,13 +26,15 @@ public:
 	//Вывод в консоль
 	void toConsole() override;
 
-	//Сериализация и десериализация
-	void serialize(std::ofstream& outFile) override;
-	void deserialize(std::ifstream& inFile) override;
+	// Унаследовано через CSVData
+	std::string getCSVHeader(const char& separator) const override;
+	std::string toCSVLine(const char& separator) const override;
+	void parseCSVLine(const std::string& line, const char& separator) override;
 
-	//Импорт и экспорт CSV
-	void exportCSV(std::ofstream& outFile);
-	void importCSV(std::string line);
-	void writeCSVHeader(std::ofstream& outFile);
+
+	// Унаследовано через BinaryData
+	void toBinary(std::ofstream& outFile) const override;
+	void fromBinary(std::ifstream& inFile) override;
+
 };
 

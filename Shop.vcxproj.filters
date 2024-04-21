@@ -26,17 +26,8 @@
     <Filter Include="View">
       <UniqueIdentifier>{e952c260-79bb-406f-abac-eb3caa5a3d30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="View\Headers">
-      <UniqueIdentifier>{99d91f88-ea47-4cea-b1ff-d6f43688fde5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Model\Services">
       <UniqueIdentifier>{5865b296-9201-420b-8fef-92d38835c89d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Model\Services\Serialization">
-      <UniqueIdentifier>{2e75fd52-2cb6-4a59-826f-8d1b08bbd431}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Model\Services\Serialization\Headers">
-      <UniqueIdentifier>{c4b6f24f-9815-4519-97f3-f6ddb520fa14}</UniqueIdentifier>
     </Filter>
     <Filter Include="Controllers\ModelsControllers">
       <UniqueIdentifier>{83b62566-96a9-40cc-906b-f40ce24dcdcf}</UniqueIdentifier>
@@ -49,6 +40,30 @@
     </Filter>
     <Filter Include="Controllers\Authorization\Headers">
       <UniqueIdentifier>{c5f7b323-d3cf-4cbc-ba94-b5220b904dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services\Console">
+      <UniqueIdentifier>{52a8d9df-f7c9-4825-a877-460dc718447b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services\CsvExchanger">
+      <UniqueIdentifier>{a349ac0f-2e6d-4afe-8b4f-b7b89c704492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Exstensions">
+      <UniqueIdentifier>{cb71f070-e578-475e-9930-3720fa3cd0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Exstensions\String">
+      <UniqueIdentifier>{e59e8204-c0f2-409f-914b-2018d1b00e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Exstensions\Vector">
+      <UniqueIdentifier>{fca70155-e0cf-4f2e-8454-898d14ac4d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Services\BinaryExchanger">
+      <UniqueIdentifier>{2e75fd52-2cb6-4a59-826f-8d1b08bbd431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View\BaseMenu">
+      <UniqueIdentifier>{9e87425f-416e-4671-89f2-da9b1cb75f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers\UsersControllers">
+      <UniqueIdentifier>{763c08b5-ee53-4bc2-8f3d-c0b8b1f1b6d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,15 +85,6 @@
     <ClInclude Include="UserRepository.h">
       <Filter>Model\Repository\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MenuView.h">
-      <Filter>View\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ConsoleView.h">
-      <Filter>View\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SerializationService.h">
-      <Filter>Model\Services\Serialization\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ProductController.h">
       <Filter>Controllers\ModelsControllers\Headers</Filter>
     </ClInclude>
@@ -88,8 +94,35 @@
     <ClInclude Include="AuthorizationController.h">
       <Filter>Controllers\Authorization\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="App.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="ConsoleIO.h">
+      <Filter>Model\Services\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVData.h">
+      <Filter>Model\Services\CsvExchanger</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVDataService.h">
+      <Filter>Model\Services\CsvExchanger</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryDataService.h">
+      <Filter>Model\Services\BinaryExchanger</Filter>
+    </ClInclude>
+    <ClInclude Include="StringExtension.h">
+      <Filter>Model\Exstensions\String</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorExtension.h">
+      <Filter>Model\Exstensions\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryData.h">
+      <Filter>Model\Services\BinaryExchanger</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuView.h">
+      <Filter>View\BaseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminController.h">
+      <Filter>Controllers\UsersControllers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultUserController.h">
+      <Filter>Controllers\UsersControllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -111,12 +144,6 @@
     <ClCompile Include="ProductRepository.cpp">
       <Filter>Model\Repository</Filter>
     </ClCompile>
-    <ClCompile Include="MenuView.cpp">
-      <Filter>View</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleView.cpp">
-      <Filter>View</Filter>
-    </ClCompile>
     <ClCompile Include="ProductController.cpp">
       <Filter>Controllers\ModelsControllers</Filter>
     </ClCompile>
@@ -125,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="AuthorizationController.cpp">
       <Filter>Controllers\Authorization</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleIO.cpp">
+      <Filter>Model\Services\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuView.cpp">
+      <Filter>View\BaseMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

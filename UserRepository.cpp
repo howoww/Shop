@@ -1,17 +1,28 @@
 #include "UserRepository.h"
 
-User* UserRepository::getUserForAuth(std::string login, std::string password)
+UserRepository::UserRepository(const std::string& filename) : DomainRepository(filename)
 {
-	if (_items.size() == 0) return nullptr;
-	for (int i = 0; i < _items.size(); i++)
-		if (_items[i].Equals(login, password)) return &_items[i];
-	return nullptr;
+	if (_items.size() == 0)
+		_items.push_back(User("Администратор", "admin", "admin", true));
 }
 
-bool UserRepository::ContainsLogin(std::string login)
+User UserRepository::getUserForAuth(const std::string& login, const std::string& password)
 {
-	if (_items.size() == 0) return false;
+	for (int i = 0; i < _items.size(); i++)
+		if (_items[i].Equals(login, password)) return _items[i];
+	throw std::invalid_argument("Неверный логин или пароль");
+}
+
+bool UserRepository::containsLogin(const std::string& login)
+{
 	for (int i = 0; i < _items.size(); i++)
 		if (_items[i].Equals(login)) return true;
 	return false;
+}
+
+void UserRepository::addItem(User& item)
+{
+	if (containsLogin(item.getLogin()))
+		throw std::invalid_argument("Пользователь с таким логином уже существует");
+	DomainRepository::addItem(item);
 }

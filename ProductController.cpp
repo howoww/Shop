@@ -1,21 +1,23 @@
 #include "ProductController.h"
-ProductController::ProductController(ProductRepository& model) : _model(&model) { }
+ProductController::ProductController(): _productRepository("products") {
+}
+
+ProductController::~ProductController() { 
+	_productRepository.saveData();
+}
 
 void ProductController::addProduct()
 {
 	char choice = 'n';
 	do {
-
-		Product product;
-		product.setName(_view.inputString("Введите наименование товара:"));
-		product.setCategory(_view.inputString("Введите категорию товара:"));
-		product.setMark(_view.inputString("Введите марку товара:"));
-		product.setCost(_view.inputValue<double>("Введите цену товара:"));
-		_model->addItem(product);
-		_model->saveData();
-		_view.printColoredText("Товар успешно добавлен.", ConsoleView::Colors::Green);
-
-		choice = _view.inputString("Хотите добавить еще товар?(y - Да,n - Нет):")[0];
+		Product product(
+			ConsoleIO::inputString("Введите наименование товара:"),
+			ConsoleIO::inputString("Введите категорию товара:"),
+			ConsoleIO::inputString("Введите марку товара:"),
+			ConsoleIO::inputPositiveValue<double>("Введите цену товара:"));
+		_productRepository.addItem(product);
+		ConsoleIO::printTextWithColor("Товар успешно добавлен.", ConsoleIO::Colors::Green);
+		choice = ConsoleIO::inputChar("Хотите добавить еще товар?(y - Да,n - Нет):");
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
@@ -24,74 +26,80 @@ void ProductController::editProduct()
 	char choice = 'n';
 	do {
 		int id = 0;
-		id = _view.inputValue<int>("Введите ID товара:");
-		Product* product = _model->getItemById(id);
-		if (product != nullptr) {
-			product->setName(_view.inputString("Введите новое наименование товара:"));
-			product->setCategory(_view.inputString("Введите новую категорию товара:"));
-			product->setMark(_view.inputString("Введите новую марку товара:"));
-			product->setCost(_view.inputValue<double>("Введите новую цену товара:"));
-			_model->saveData();
-			_view.printColoredText("Товар успешно изменен.", ConsoleView::Colors::Green);
+		id = ConsoleIO::inputPositiveValue<int>("Введите ID товара:");
+		try {
+			Product product = _productRepository.getItemById(id);
+			product.setName(ConsoleIO::inputString("Введите новое наименование товара:"));
+			product.setCategory(ConsoleIO::inputString("Введите новую категорию товара:"));
+			product.setMark(ConsoleIO::inputString("Введите новую марку товара:"));
+			product.setCost(ConsoleIO::inputPositiveValue<double>("Введите новую цену товара:"));
+			ConsoleIO::printTextWithColor("Товар успешно изменен.", ConsoleIO::Colors::Green);
 		}
-		else
-			_view.printColoredText("Товара с веденным ID не существует.", ConsoleView::Colors::Red);
-		choice = _view.inputString("Хотите изменить еще товар?(y - Да,n - Нет):")[0];
+		catch (const std::exception& e) {
+			ConsoleIO::printError(e.what());
+		}
+		choice = ConsoleIO::inputChar("Хотите изменить еще товар?(y - Да,n - Нет):");
 	} while (choice == 'y' || choice == 'Y');
-	_model->saveData();
 	system("pause");
 }
 void ProductController::deleteProduct()
 {
 	char choice = 'n';
 	do {
-		int id;
-		id = _view.inputValue<int>("Введите ID товара:");
-		std::string isDelete = _view.inputString("Вы уверены?(y - Да,n - Нет):");
-		if (isDelete == "y" || isDelete == "Y")
-			if (!_model->deleteItemById(id))
-				_view.printColoredText("Товара с веденным ID не существует.", ConsoleView::Colors::Red);
-			else
-			{
-				_model->saveData();
-				_view.printColoredText("Товар успешно удален.", ConsoleView::Colors::Green);
-			}
-		choice = _view.inputString("Хотите удалить еще товар?(y - Да,n - Нет):")[0];
+		std::vector<int> ids = ConsoleIO::inputPositiveValues<int>("Введите ID товара/ов через пробел(1 2 3):", ' ');
+		char isDelete = ConsoleIO::inputChar("Вы уверены?(y - Да,n - Нет):");
+		if (isDelete == 'y' || isDelete == 'Y')
+			try
+		{
+			_productRepository.deleteItemsById(ids);
+			ConsoleIO::printTextWithColor("Товар/ы успешно удален/ы", ConsoleIO::Colors::Green);
+		}
+		catch (const std::exception& e) {
+			ConsoleIO::printError(e.what());
+		}
+		choice = ConsoleIO::inputChar("Хотите удалить еще товар/ы?(y - Да,n - Нет):");
 	} while (choice == 'y' || choice == 'Y');
-	_model->saveData();
 	system("pause");
 }
 void ProductController::displayProducts()
 {
 	std::cout << std::setw(5) << "ID" << std::setw(25) << "Наименование" << std::setw(20) << "Категория" << std::setw(20) << "Марка" << std::setw(10) << "Цена" << std::endl;
 	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
-	for (int i = 0; i < _model->getAll().size(); i++) {
-		_model->getAll()[i].toConsole();
+	for (int i = 0; i < _productRepository.getAll().size(); i++) {
+		_productRepository.getAll()[i].toConsole();
 	}
 }
 
-void ProductController::importCsvProducts()
+void ProductController::importFromCSV()
 {
-	std::string filepath = _view.inputString("Введите путь к файлу(C:\\Template\\file.csv):");
-	if (_model->importCsvProducts(filepath)) 
+	std::string filepath = ConsoleIO::inputString("Введите путь к csv файлу(C:\\Template\\file):");
+	char separator = ConsoleIO::inputString("Введите разделитель между данными(, или ;):")[0];
+	if (separator == ',' || separator == ';')
 	{
-		_model->saveData();
-		_view.printColoredText("Данные импортированы.", ConsoleView::Colors::Green);
+		_productRepository.importFromCSV(filepath, separator);
 	}
 	else
-		_view.printColoredText("Произошла ошибка при импорте файлов.", ConsoleView::Colors::Red);
+		ConsoleIO::printTextWithColor("Неверный разделитель. Введите , или ;", ConsoleIO::Colors::Red);
 	system("pause");
 }
 
-void ProductController::exportCsvProducts()
+void ProductController::exportToCSV()
 {
-	std::string filepath = _view.inputString("Введите путь к файлу(C:\\Template\\file.csv):");
-	if (_model->exportCsvProducts(filepath))
-		_view.printColoredText("Данные экспортированы.", ConsoleView::Colors::Green);
+	std::string filepath = ConsoleIO::inputString("Введите путь к csv файлу(C:\\Template\\file):");
+	char separator = ConsoleIO::inputChar("Введите разделитель между данными(, или ;):");
+	if (separator == ',' || separator == ';')
+		_productRepository.exportToCSV(filepath, separator);
 	else
-		_view.printColoredText("Произошла ошибка при экспорте файлов.", ConsoleView::Colors::Red);
+		ConsoleIO::printTextWithColor("Неверный разделитель. Введите , или ;", ConsoleIO::Colors::Red);
 	system("pause");
 }
+
+void ProductController::saveProducts()
+{
+	_productRepository.saveData();
+	system("pause");
+}
+
 
 
 

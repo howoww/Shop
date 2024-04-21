@@ -4,8 +4,9 @@
 #include <algorithm>
 #include "Domain.h"
 #include <cctype>
-#include "SerializationService.h"
-
+#include "StringExtension.h"
+#include "VectorExtension.h"
+#include "BinaryDataService.h"
 template <class Domain>
 class DomainRepository
 {
@@ -13,36 +14,30 @@ protected:
 	std::string _filename;
 	std::vector<Domain> _items;
 public:
-	DomainRepository(std::string filename);
-
-	void addItem(Domain item);
-
-	bool deleteItemById(int id);
-
-	Domain* getItemById(int id);
-
-	std::vector<Domain> getAll();
-
+	DomainRepository(const std::string& filename);
+	virtual void addItem(Domain& item);
+	void addItems(std::vector<Domain>& items);
+	void deleteItemsById(std::vector<int>& ids);
+	Domain& getItemById(const int& id);
+	std::vector<Domain> getAll() const;
 	void saveData();
-
 	template<typename TypeGetter>
-	std::vector<Domain> searchItems(TypeGetter(Domain::* getter)(), std::string searchText);
-
+	std::vector<Domain> searchItems(TypeGetter(Domain::* getter)() const, const std::string& searchText);
 	template<typename TypeGetter>
-	void sort(bool isAscending, TypeGetter(Domain::* getter)());
+	void sort(bool isAscending, TypeGetter(Domain::* getter)() const);
 
 };
 
 template<class Domain>
-DomainRepository<Domain>::DomainRepository(std::string filename) : _filename(filename) 
+DomainRepository<Domain>::DomainRepository(const std::string& filename) : _filename(filename)
 {
-	SerializationService _serializationService(_filename);
-	_serializationService.deserializeRepository<Domain>(_items);
+	BinaryDataService<Domain> _serializationService(_filename);
+	_serializationService.loadFromBinary(_items);
 }
 
 
 template<class Domain>
-void DomainRepository<Domain>::addItem(Domain item) 
+void DomainRepository<Domain>::addItem(Domain& item)
 {
 	if (_items.size() != 0) item.setId(_items.back().getId() + 1);
 	else item.setId(1);
@@ -50,53 +45,91 @@ void DomainRepository<Domain>::addItem(Domain item)
 }
 
 template<class Domain>
-bool DomainRepository<Domain>::deleteItemById(int id)
+void DomainRepository<Domain>::addItems(std::vector<Domain>& items)
 {
-	for (int i = 0; i < _items.size(); i++)
-		if (_items[i].getId() == id) {
-			_items.erase(_items.begin() + i);
-			return true;
+	if (items.empty())
+		throw std::invalid_argument("Вы ничего не добавляете");
+	for (size_t i = 0; i < items.size(); i++) {
+		addItem(items[i]);
+	}
+}
+
+template<class Domain>
+void DomainRepository<Domain>::deleteItemsById(std::vector<int>& ids)
+{
+	if (ids.empty())
+		throw std::invalid_argument("Вы ничего не удаляете");
+	std::vector<int> rightIdsForDelete;
+	//Получение существующих ID
+	for (size_t i = 0; i < _items.size(); i++) {
+		for (size_t j = 0; j < ids.size(); j++) {
+			if (_items[i].getId() == ids[j]) {
+				rightIdsForDelete.push_back(ids[j]);
+				break;
+			}
 		}
-	return false;
+	}
+
+	std::vector<int> missingIDs = VectorExtension::removeMatchingElements<int>(ids, rightIdsForDelete);
+	if (!missingIDs.empty()) {
+		std::string messageIDs;
+		for (const int& id : missingIDs) {
+			messageIDs += std::to_string(id) + ",";
+		}
+		messageIDs.pop_back();
+		throw std::invalid_argument("Удаление неудачно, не существуют следующие ID:" + messageIDs);
+	} 
+	else {
+		for (size_t i = 0; i < _items.size(); i++) {
+			for (size_t j = 0; j < rightIdsForDelete.size(); j++) {
+				if (_items[i].getId() == rightIdsForDelete[j]) {
+					_items.erase(_items.begin() + i);
+					break;
+				}
+			}
+		}
+	}
 }
 
 template<class Domain>
-Domain* DomainRepository<Domain>::getItemById(int id)
+Domain& DomainRepository<Domain>::getItemById(const int& id)
 {
 	for (int i = 0; i < _items.size(); i++)
-		if (_items[i].getId() == id) return &_items[i];
-	return nullptr;
+		if (_items[i].getId() == id) return _items[i];
+	throw
+		std::invalid_argument("Элемент с id: " + std::to_string(id) + " не найден");
 }
 
 template<class Domain>
-std::vector<Domain> DomainRepository<Domain>::getAll()
+std::vector<Domain> DomainRepository<Domain>::getAll() const
 {
 	return _items;
 }
 
 template<class Domain>
- void DomainRepository<Domain>::saveData()
+void DomainRepository<Domain>::saveData() 
 {
-	 SerializationService _serializationService(_filename);
-	 _serializationService.serializeRepository<Domain>(_items);
+	BinaryDataService<Domain> _serializationService(_filename);
+	_serializationService.saveToBinary(_items);
 }
 
 template<class Domain>
 template<typename TypeGetter>
-std::vector<Domain> DomainRepository<Domain>::searchItems(TypeGetter(Domain::* getter)(), std::string searchText)
+std::vector<Domain> DomainRepository<Domain>::searchItems(TypeGetter(Domain::* getter)() const, const std::string& searchText)
 {
 	std::vector<Domain> findItems;
 	for (int i = 0; i < _items.size(); i++) {
 		std::ostringstream os;
 		os << (_items[i].*getter)();
-		if (os.str().find(searchText) != std::string::npos) findItems.push_back(_items[i]);
+		if (StringExtension::toDownString(os.str()).find(StringExtension::toDownString(searchText)) != std::string::npos)
+			findItems.push_back(_items[i]);
 	}
 	return findItems;
 }
 
 template<class Domain>
 template<typename TypeGetter>
-void DomainRepository<Domain>::sort(bool isAscending, TypeGetter(Domain::* getter)())
+void DomainRepository<Domain>::sort(bool isAscending, TypeGetter(Domain::* getter)() const)
 {
 	isAscending ?
 		std::sort(_items.begin(), _items.end(), [&](Domain& lhs, Domain& rhs) {return (lhs.*getter)() < (rhs.*getter)(); }) :

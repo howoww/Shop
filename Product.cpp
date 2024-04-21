@@ -1,22 +1,25 @@
 #include "Product.h"
-Product::Product() {}
-Product::Product(std::string name, double cost, std::string mark, std::string category) :_name(name), _cost(cost), _mark(mark), _category(category) {}
-std::string Product::getName()
+Product::Product() :_cost(0.0) {}
+Product::Product(std::string name, std::string category, std::string mark, double cost):_name(name), _cost(cost), _mark(mark), _category(category) 
+{
+}
+
+std::string Product::getName() const
 {
 	return _name;
 }
 
-double Product::getCost()
+double Product::getCost() const
 {
 	return _cost;
 }
 
-std::string Product::getMark()
+std::string Product::getMark() const
 {
 	return _mark;
 }
 
-std::string Product::getCategory()
+std::string Product::getCategory() const
 {
 	return _category;
 }
@@ -47,9 +50,29 @@ void Product::toConsole()
 	std::cout << std::setw(25) << _name << std::setw(20) << _category << std::setw(20) << _mark << std::setw(10) << _cost << std::endl;
 }
 
-void Product::serialize(std::ofstream& outFile)
+std::string Product::getCSVHeader(const char& separator) const
 {
-	Domain::serialize(outFile);
+	return "Наименование товара" + std::string(1, separator) + "Категория" + std::string(1, separator) + "Марка" + std::string(1, separator) + "Цена";
+}
+std::string Product::toCSVLine(const char& separator) const
+{
+	return _name + std::string(1, separator) + _category + std::string(1, separator) + _mark + std::string(1, separator) + std::to_string(_cost);
+}
+void Product::parseCSVLine(const std::string& line, const char& separator)
+{
+	std::vector<std::string> splitStrings = StringExtension::split(line, separator);
+	if (splitStrings.empty()) throw std::invalid_argument("Пустая строка");
+	if (splitStrings.size() != 4) throw std::invalid_argument("Неверное количество полей в строке"); //Количество полей в классе
+	_name = splitStrings[0];
+	_category = splitStrings[1];
+	_mark = splitStrings[2];
+	_cost = std::stod(splitStrings[3]);
+}
+
+
+void Product::toBinary(std::ofstream& outFile) const
+{
+	Domain::toBinary(outFile);
 	//Name
 	size_t nameLength = _name.length();
 	outFile.write((char*)&nameLength, sizeof(nameLength));
@@ -64,65 +87,34 @@ void Product::serialize(std::ofstream& outFile)
 	outFile.write(_category.c_str(), categoryLength);
 	//Cost
 	outFile.write((char*)&_cost, sizeof(_cost));
-
-
 }
 
-void Product::deserialize(std::ifstream& inFile)
+void Product::fromBinary(std::ifstream& inFile)
 {
-	Domain::deserialize(inFile);
+	Domain::fromBinary(inFile);
 	//Name
 	size_t nameLength;
 	inFile.read((char*)&nameLength, sizeof(nameLength));
-	std::vector<char> nameBuffer(nameLength + 1); // Добавляем 1 для завершающего нулевого символа
+	std::vector<char> nameBuffer(nameLength + 1);
 	inFile.read(nameBuffer.data(), nameLength);
 	nameBuffer[nameLength] = '\0';
 	_name = nameBuffer.data();
 	//Mark
 	size_t markLength;
 	inFile.read((char*)&markLength, sizeof(markLength));
-	std::vector<char> markBuffer(markLength + 1); // Добавляем 1 для завершающего нулевого символа
+	std::vector<char> markBuffer(markLength + 1);
 	inFile.read(markBuffer.data(), markLength);
 	markBuffer[markLength] = '\0';
 	_mark = markBuffer.data();
 	//Category
 	size_t categoryLength;
 	inFile.read((char*)&categoryLength, sizeof(categoryLength));
-	std::vector<char> categoryBuffer(categoryLength + 1); // Добавляем 1 для завершающего нулевого символа
+	std::vector<char> categoryBuffer(categoryLength + 1);
 	inFile.read(categoryBuffer.data(), categoryLength);
 	categoryBuffer[categoryLength] = '\0';
 	_category = categoryBuffer.data();
 	//Cost
 	inFile.read((char*)&_cost, sizeof(_cost));
-
-}
-
-void Product::exportCSV(std::ofstream& outFile)
-{
-	outFile << _name << "," << _category << "," << _mark << "," << _cost << std::endl;
-}
-
-void Product::importCSV(std::string line)
-{
-		std::stringstream ss(line);
-		std::string token;
-		
-		std::getline(ss, token, ',');
-		_name = token;
-
-		std::getline(ss, token, ',');
-		_mark = token;
-
-		std::getline(ss, token, ',');
-		_category = token;
-
-		std::getline(ss, token, ',');
-		_cost = std::stod(token);
-}
-
-void Product::writeCSVHeader(std::ofstream& outFile)
-{
-	outFile << "Наименование товара" << "," << "Категория" << "," << "Марка" << "," << "Цена" << std::endl;
 }
 
 
