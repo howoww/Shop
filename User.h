@@ -19,14 +19,14 @@ public:
 	void setLogin(std::string login);
 	void setPassword(std::string password);
 	void setIsAdmin(bool isAdmin);
-
-	void toConsole() override;
-
+	void toTableLine() const  override;
 	bool Equals(std::string login, std::string password) const;
 	bool Equals(std::string login) const;
 
 	// Унаследовано через BinaryData
 	void toBinary(std::ofstream& outFile) const override;
 	void fromBinary(std::ifstream& inFile) override;
+
+
 };
 

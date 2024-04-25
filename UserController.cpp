@@ -1,31 +1,41 @@
 #include "UserController.h"
+UserController::UserController() : _userRepository(App::USERS_FILENAME) {
+}
 
-UserController::UserController(): _userRepository("users") {
-}
-UserController::~UserController()
+void UserController::displayUsers(const std::vector<User>& users)
 {
-	_userRepository.saveData();
+	if (users.empty()) {
+		std::cout << "Список пуст" << std::endl;
+		return;
+	}
+	std::cout << std::left << std::setw(5) << "ID" << std::setw(25) << "Имя" << std::setw(20) << "Логин" << std::setw(20) << "Пароль" << std::setw(10) << "Уровень доступа" << std::endl;
+	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
+	for (int i = 0; i < users.size(); i++) {
+		users[i].toTableLine();
+	}
 }
+
 void UserController::addUser()
 {
 	char choice = 'n';
 	do {
 		User user(
-			ConsoleIO::inputString("Введите свое имя:"),
-			ConsoleIO::inputString("Введите свой логин:"),
-			ConsoleIO::inputString("Введите свой пароль:"), false);
+			ConsoleExtension::inputString("Введите свое имя:"),
+			ConsoleExtension::inputString("Введите свой логин:"),
+			ConsoleExtension::inputString("Введите свой пароль:"), false);
 
-		char isAdmin = ConsoleIO::inputChar("У пользователя тип доступа администратор?(y - Да,n - Нет):");
+		char isAdmin = ConsoleExtension::inputChar("У пользователя тип доступа администратор?(y - Да,n - Нет):");
 		user.setIsAdmin(isAdmin == 'y' || isAdmin == 'Y');
 
 		try {
 			_userRepository.addItem(user);
-			ConsoleIO::printTextWithColor("Пользователь успешно добавлен.", ConsoleIO::Colors::Green);
+			ConsoleExtension::printTextWithColor("Пользователь успешно добавлен.", ConsoleExtension::Colors::Green);
+			_userRepository.saveData();
 		}
 		catch (const std::exception& e) {
-			ConsoleIO::printError(e.what());
+			ConsoleExtension::printError(e.what());
 		}
-		choice = ConsoleIO::inputChar("Хотите добавить еще пользователя?(y - Да,n - Нет):");
+		choice = ConsoleExtension::inputChar("Хотите добавить еще пользователя?(y - Да,n - Нет):");
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
@@ -34,21 +44,24 @@ void UserController::editUser()
 {
 	char choice = 'n';
 	do {
+		displayUsers();
 		int id = 0;
-		id = ConsoleIO::inputPositiveValue<int>("Введите ID пользователя:");
+		id = ConsoleExtension::inputPositiveValue<int>("Введите ID пользователя:");
 		try {
 			User user = _userRepository.getItemById(id);
-			user.setName(ConsoleIO::inputString("Введите новое имя:"));
-			user.setLogin(ConsoleIO::inputString("Введите новый логин:"));
-			user.setPassword(ConsoleIO::inputString("Введите новый пароль:"));
-			char inputIsAdmin = ConsoleIO::inputChar("У пользователя тип доступа администратор?(y - Да,n - Нет):");
+			user.setName(ConsoleExtension::inputString("Введите новое имя:"));
+			user.setLogin(ConsoleExtension::inputString("Введите новый логин:"));
+			user.setPassword(ConsoleExtension::inputString("Введите новый пароль:"));
+			char inputIsAdmin = ConsoleExtension::inputChar("У пользователя тип доступа администратор?(y - Да,n - Нет):");
 			user.setIsAdmin(inputIsAdmin == 'y' || inputIsAdmin == 'Y');
-			ConsoleIO::printTextWithColor("Пользователь успешно изменен.", ConsoleIO::Colors::Green);
+			_userRepository.UpdateItemById(user);
+			ConsoleExtension::printTextWithColor("Пользователь успешно изменен.", ConsoleExtension::Colors::Green);
+			_userRepository.saveData();
 		}
 		catch (const std::exception& e) {
-			ConsoleIO::printError(e.what());
+			ConsoleExtension::printError(e.what());
 		}
-		choice = ConsoleIO::inputString("Хотите изменить еще пользователя?(y - Да,n - Нет):")[0];
+		choice = ConsoleExtension::inputString("Хотите изменить еще пользователя?(y - Да,n - Нет):")[0];
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
@@ -57,35 +70,28 @@ void UserController::deleteUser()
 {
 	char choice = 'n';
 	do {
-		std::vector<int> idsForDelete = ConsoleIO::inputPositiveValues<int>("Введите ID пользователя/ей через пробел(1 2 3):", ' ');
-		char isDelete = ConsoleIO::inputChar("Вы уверены?(y - Да,n - Нет):");
+		displayUsers();
+		std::vector<int> idsForDelete = ConsoleExtension::inputPositiveValues<int>("Введите ID пользователя/ей через пробел(1 2 3):", ' ');
+		char isDelete = ConsoleExtension::inputChar("Вы уверены?(y - Да,n - Нет):");
 
-		if (isDelete == 'y' || isDelete == 'Y')
+		if (isDelete == 'y' || isDelete == 'Y') {
 			try {
-			_userRepository.deleteItemsById(idsForDelete);
-			ConsoleIO::printTextWithColor("Пользователь/и успешно удален/ы", ConsoleIO::Colors::Green);
+				_userRepository.deleteItemsByIds(idsForDelete);
+				ConsoleExtension::printTextWithColor("Пользователь/и успешно удален/ы", ConsoleExtension::Colors::Green);
+				_userRepository.saveData();
+			}
+			catch (const std::exception& e) {
+				ConsoleExtension::printError(e.what());
+			}
 		}
-		catch (const std::exception& e) {
-			ConsoleIO::printError(e.what());
-		}
-		choice = ConsoleIO::inputString("Хотите удалить еще пользователя/ей?(y - Да,n - Нет):")[0];
+		choice = ConsoleExtension::inputString("Хотите удалить еще пользователя/ей?(y - Да,n - Нет):")[0];
 	} while (choice == 'y' || choice == 'Y');
 	system("pause");
 }
 
 void UserController::displayUsers()
 {
-	std::cout << std::setw(5) << "ID" << std::setw(25) << "Имя" << std::setw(20) << "Логин" << std::setw(20) << "Пароль" << std::setw(10) << "Уровень доступа" << std::endl;
-	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
-	for (int i = 0; i < _userRepository.getAll().size(); i++) {
-		_userRepository.getAll()[i].toConsole();
-	}
+	const std::vector<User>& users = _userRepository.getAll();
+	displayUsers(users);
 }
-
-void UserController::saveUsers()
-{
-	_userRepository.saveData();
-	system("pause");
-}
-
 

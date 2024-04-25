@@ -44,12 +44,6 @@ void Product::setCategory(std::string category)
 	_category = category;
 }
 
-void Product::toConsole()
-{
-	Domain::toConsole();
-	std::cout << std::setw(25) << _name << std::setw(20) << _category << std::setw(20) << _mark << std::setw(10) << _cost << std::endl;
-}
-
 std::string Product::getCSVHeader(const char& separator) const
 {
 	return "Наименование товара" + std::string(1, separator) + "Категория" + std::string(1, separator) + "Марка" + std::string(1, separator) + "Цена";
@@ -67,6 +61,12 @@ void Product::parseCSVLine(const std::string& line, const char& separator)
 	_category = splitStrings[1];
 	_mark = splitStrings[2];
 	_cost = std::stod(splitStrings[3]);
+}
+
+void Product::toTableLine()  const
+{
+	Domain::toTableLine();
+	std::cout << std::setw(25) << _name << std::setw(20) << _category << std::setw(20) << _mark << std::setw(10) << _cost << std::endl;
 }
 
 

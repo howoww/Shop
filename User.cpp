@@ -1,6 +1,6 @@
 #include "User.h"
 
-User::User():_isAdmin(false) {}
+User::User() :_isAdmin(false) {}
 
 User::User(std::string name, std::string login, std::string password, bool isAdmin) :_name(name), _login(login), _password(password), _isAdmin(isAdmin) {}
 
@@ -54,12 +54,6 @@ bool User::Equals(std::string login) const
 	return _login == login;
 }
 
-void User::toConsole()
-{
-	Domain::toConsole();
-	std::cout << std::setw(25) << _name << std::setw(20) << _login << std::setw(20) << _password << std::setw(10) << (_isAdmin ? "Администратор" : "Пользователь") << std::endl;
-}
-
 void User::toBinary(std::ofstream& outFile) const
 {
 	Domain::toBinary(outFile);
@@ -105,6 +99,12 @@ void User::fromBinary(std::ifstream& inFile)
 	_password = passwordBuffer.data();
 	//IsAdmin
 	inFile.read((char*)&_isAdmin, sizeof(_isAdmin));
+}
+
+void User::toTableLine() const
+{
+	Domain::toTableLine();
+	std::cout << std::setw(25) << _name << std::setw(20) << _login << std::setw(20) << _password << std::setw(10) << (_isAdmin ? "Администратор" : "Пользователь") << std::endl;
 }
 
 

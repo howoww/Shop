@@ -3,21 +3,21 @@
 #include "ProductRepository.h"
 #include "Product.h"
 #include "Domain.h"
-#include "ConsoleIO.h"
+#include "ConsoleExtension.h"
+#include "App.h"
 class ProductController
 {
 private:
 	ProductRepository _productRepository;
+	void displayProducts(const std::vector<Product>& products);
 public:
 	ProductController();
-	~ProductController();
 	void addProduct();
 	void editProduct();
 	void deleteProduct();
 	void displayProducts();
 	void importFromCSV();
 	void exportToCSV();
-	void saveProducts();
 	template<typename TypeGetter>
 	void sort(TypeGetter (Product::* getter)() const);
 
@@ -28,22 +28,17 @@ public:
 template<typename TypeGetter>
 void ProductController::sort(TypeGetter (Product::* getter)() const)
 {
-	char choice = ConsoleIO::inputChar("Сортировать по возрастанию?(y - Да,n - Нет):");
-	_productRepository.sort(choice == 'y' || choice == 'Y', getter);
-	displayProducts();
+	char choice = ConsoleExtension::inputChar("Сортировать по возрастанию?(y - Да,n - Нет):");
+	const std::vector<Product>& sortedProducts = _productRepository.getSortedVector(choice == 'y' || choice == 'Y', getter);
+	displayProducts(sortedProducts);
 	system("pause");
 }
 
 template<typename TypeGetter>
 void ProductController::searchProducts(TypeGetter(Product::* getter)() const)
 {
-	std::string searchText = ConsoleIO::inputString("Введите текст для поиска:");
-	auto searchedProducts = _productRepository.searchItems(getter, searchText);
-
-	std::cout << std::setw(5) << "ID" << std::setw(25) << "Наименование" << std::setw(20) << "Категория" << std::setw(20) << "Марка" << std::setw(10) << "Цена" << std::endl;
-	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
-	for (int i = 0; i < searchedProducts.size(); i++) {
-		searchedProducts[i].toConsole();
-	}
+	std::string searchText = ConsoleExtension::inputString("Введите текст для поиска:");
+	const std::vector<Product>& searchedProducts = _productRepository.searchItems(getter, searchText);
+	displayProducts(searchedProducts);
 	system("pause");
 }

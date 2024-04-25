@@ -11,15 +11,15 @@ class Domain : public BinaryData
 private:
 	int _id;
 public:
-	Domain() { _id = NULL; };
+	Domain() { _id = 0; };
+	void setId(const int& id);
 	int getId() const;
-	void setId(int id);
-
-	virtual void toConsole();
+	virtual void toTableLine() const;
 
 	// Унаследовано через BinaryData
 	void toBinary(std::ofstream& outFile) const override;
 	void fromBinary(std::ifstream& inFile) override;
+
 
 };
 

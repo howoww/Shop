@@ -2,7 +2,7 @@
 #include <functional>
 #include <vector>
 #include <string>
-#include "ConsoleIO.h"
+#include "ConsoleExtension.h"
 class MenuView {
 private:
 	std::string _lable;

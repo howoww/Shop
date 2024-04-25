@@ -1,9 +1,11 @@
 #pragma once
 #include "UserRepository.h"
-#include "ConsoleIO.h"
+#include "ConsoleExtension.h"
 #include "MenuView.h"
 #include "AdminController.h"
 #include "DefaultUserController.h"
+#include "BinaryDataService.h"
+#include "App.h"
 class AuthorizationController
 {
 private:
@@ -13,7 +15,6 @@ private:
 	bool _isAdmin = false;
 public:
 	AuthorizationController();
-	~AuthorizationController();
 	void registerUser();
 	void authorizeUser();
 	bool isAdmin() const;

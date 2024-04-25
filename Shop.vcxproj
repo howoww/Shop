@@ -133,9 +133,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AdminController.h" />
+    <ClInclude Include="App.h" />
     <ClInclude Include="AuthorizationController.h" />
     <ClInclude Include="BinaryData.h" />
-    <ClInclude Include="ConsoleIO.h">
+    <ClInclude Include="ConsoleExtension.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="CSVData.h" />
@@ -159,7 +160,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AuthorizationController.cpp" />
-    <ClCompile Include="ConsoleIO.cpp" />
+    <ClCompile Include="ConsoleExtension.cpp" />
     <ClCompile Include="Domain.cpp" />
     <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="Product.cpp" />

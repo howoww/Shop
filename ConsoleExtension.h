@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "StringExtension.h"
-class ConsoleIO
+class ConsoleExtension
 {
 public:
 	enum class Colors {
@@ -21,16 +21,20 @@ public:
 
 	static std::string inputString(const std::string& prompt);
 	static char inputChar(const std::string& prompt);
+
 	template <typename T> requires std::is_same_v<T, int> || std::is_same_v<T, double>
 	static T inputPositiveValue(const std::string& prompt);
+
 	template <typename T> requires std::is_same_v<T, int> || std::is_same_v<T, double>
 	static std::vector<T> inputPositiveValues(const std::string& prompt, const char& delimiter);
+
 	static void printTextWithColor(const std::string& text, const Colors& color);
+
 	static void printError(const std::string& errorMessage);
 };
 
 template<typename T> requires std::is_same_v<T, int> || std::is_same_v<T, double>
-T ConsoleIO::inputPositiveValue(const std::string& prompt)
+T ConsoleExtension::inputPositiveValue(const std::string& prompt)
 {
 	T input;
 	std::string line;
@@ -49,7 +53,7 @@ T ConsoleIO::inputPositiveValue(const std::string& prompt)
 }
 
 template<typename T> requires std::is_same_v<T, int> || std::is_same_v<T, double>
-std::vector<T> ConsoleIO::inputPositiveValues(const std::string& prompt, const char& delimiter)
+std::vector<T> ConsoleExtension::inputPositiveValues(const std::string& prompt, const char& delimiter)
 {
 	std::vector<T> positiveInputValues;
 	std::string line;

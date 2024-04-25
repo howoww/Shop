@@ -41,9 +41,6 @@
     <Filter Include="Controllers\Authorization\Headers">
       <UniqueIdentifier>{c5f7b323-d3cf-4cbc-ba94-b5220b904dc3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Model\Services\Console">
-      <UniqueIdentifier>{52a8d9df-f7c9-4825-a877-460dc718447b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Model\Services\CsvExchanger">
       <UniqueIdentifier>{a349ac0f-2e6d-4afe-8b4f-b7b89c704492}</UniqueIdentifier>
     </Filter>
@@ -64,6 +61,9 @@
     </Filter>
     <Filter Include="Controllers\UsersControllers">
       <UniqueIdentifier>{763c08b5-ee53-4bc2-8f3d-c0b8b1f1b6d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Exstensions\Console">
+      <UniqueIdentifier>{52a8d9df-f7c9-4825-a877-460dc718447b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -94,8 +94,8 @@
     <ClInclude Include="AuthorizationController.h">
       <Filter>Controllers\Authorization\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleIO.h">
-      <Filter>Model\Services\Console</Filter>
+    <ClInclude Include="ConsoleExtension.h">
+      <Filter>Model\Exstensions\Console</Filter>
     </ClInclude>
     <ClInclude Include="CSVData.h">
       <Filter>Model\Services\CsvExchanger</Filter>
@@ -123,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="DefaultUserController.h">
       <Filter>Controllers\UsersControllers</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,8 +156,8 @@
     <ClCompile Include="AuthorizationController.cpp">
       <Filter>Controllers\Authorization</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleIO.cpp">
-      <Filter>Model\Services\Console</Filter>
+    <ClCompile Include="ConsoleExtension.cpp">
+      <Filter>Model\Exstensions\Console</Filter>
     </ClCompile>
     <ClCompile Include="MenuView.cpp">
       <Filter>View\BaseMenu</Filter>

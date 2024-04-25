@@ -5,8 +5,8 @@
 class ProductRepository : public  DomainRepository<Product>
 {
 public:
-	ProductRepository(std::string filename);
-	void exportToCSV(std::string filepath, char separator);
-	void importFromCSV(std::string filepath, char separator);
+	ProductRepository(const std::string& filename);
+	void exportToCSV(const std::string& filepath, const char& separator) const;
+	void importFromCSV(const std::string& filepath, const char& separator);
 };
 

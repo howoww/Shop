@@ -26,10 +26,9 @@ public:
     }
 
    static std::string toDownString(const std::string& str) {
-        std::string result = str;
-        std::transform(result.begin(), result.end(), result.begin(),
-            [](unsigned char c) { return std::tolower(c); });
+       std::wstring wstring(str.begin(), str.end());
+       std::transform(wstring.begin(), wstring.end(), wstring.begin(), ::tolower);
+       std::string result(wstring.begin(), wstring.end());
         return result;
     }
-    // Другие методы расширения строк могут быть добавлены здесь
 };

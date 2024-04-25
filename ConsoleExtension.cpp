@@ -1,5 +1,5 @@
-#include "ConsoleIO.h"
-std::string ConsoleIO::inputString(const std::string& prompt)
+#include "ConsoleExtension.h"
+std::string ConsoleExtension::inputString(const std::string& prompt)
 {
 	std::string input;
 	while (true) {
@@ -10,7 +10,7 @@ std::string ConsoleIO::inputString(const std::string& prompt)
 	}
 	return input;
 }
-char ConsoleIO::inputChar(const std::string& prompt)
+char ConsoleExtension::inputChar(const std::string& prompt)
 {
 	std::string input;
 	while (true) {
@@ -22,12 +22,12 @@ char ConsoleIO::inputChar(const std::string& prompt)
 	}
 	return input[0];
 }
-void ConsoleIO::printTextWithColor(const std::string& text, const Colors& color)
+void ConsoleExtension::printTextWithColor(const std::string& text, const Colors& color)
 {
 	std::cout << "\033[" << (int)color << "m" << text << "\033[0m" << std::endl;
 }
 
-void ConsoleIO::printError(const std::string& errorMessage)
+void ConsoleExtension::printError(const std::string& errorMessage)
 {
 	std::cerr << "\033[31mÎøèáêà: \033[0m" << errorMessage << std::endl;
 }

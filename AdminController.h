@@ -14,15 +14,15 @@ public:
 			MenuView("Список пользователей", [&]() {_userController.displayUsers(); system("pause"); }),
 				MenuView("Поиск", std::vector<MenuView>{
 				MenuView("Поиск по ID", [&]() { _userController.searchUsers<int>(&User::getId); }),
-					MenuView("Поиск по имени", [&]() {_userController.searchUsers<std::string>(&User::getName); }),
-					MenuView("Поиск по логину", [&]() {_userController.searchUsers<std::string>(&User::getLogin); })}),
+				MenuView("Поиск по имени", [&]() {_userController.searchUsers<std::string>(&User::getName); }),
+				MenuView("Поиск по логину", [&]() {_userController.searchUsers<std::string>(&User::getLogin); })}),
 				MenuView("Добавить пользователя", [&]() { _userController.addUser(); }),
 				MenuView("Изменть пользователя", [&]() {_userController.editUser(); }),
 				MenuView("Удалить пользователя", [&]() {_userController.deleteUser(); }),
 				MenuView("Сортировка", std::vector<MenuView>{
 				MenuView("Сортировать по ID", [&]() {_userController.sort<int>(&User::getId); }),
-					MenuView("Сортировать по имени", [&]() {_userController.sort<std::string>(&User::getName); }),
-					MenuView("Сортировать по логину", [&]() {_userController.sort<std::string>(&User::getLogin); })
+				MenuView("Сортировать по имени", [&]() {_userController.sort<std::string>(&User::getName); }),
+				MenuView("Сортировать по логину", [&]() {_userController.sort<std::string>(&User::getLogin); })
 			})
 		}),
 			MenuView("Товары", std::vector<MenuView>{

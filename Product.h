@@ -11,7 +11,7 @@ private:
 	std::string _category;
 public:
 	Product();
-	Product(std::string name,std::string category, std::string mark, double cost );
+	Product(std::string name, std::string category, std::string mark, double cost);
 
 	//Геттеры и сеттеры
 	std::string getName() const;
@@ -22,9 +22,8 @@ public:
 	void setCost(double cost);
 	void setMark(std::string mark);
 	void setCategory(std::string category);
-	
-	//Вывод в консоль
-	void toConsole() override;
+	void toTableLine() const override;
+
 
 	// Унаследовано через CSVData
 	std::string getCSVHeader(const char& separator) const override;
