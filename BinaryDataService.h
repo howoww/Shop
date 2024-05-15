@@ -40,9 +40,9 @@ void BinaryDataService<T>::loadFromBinary(std::vector<T>& data)
 		if (!file.is_open()) {
 			throw std::invalid_argument("Файл не может быть открыт");
 		}
-		size_t sizeData = NULL;
+		size_t sizeData = 0;
 		file.read((char*)&sizeData, sizeof(sizeData));
-		if (sizeData == NULL) {
+		if (sizeData == 0) {
 			throw std::runtime_error("Невозможно загрузить файл");
 		}
 		std::vector<T> dataForLoad;
