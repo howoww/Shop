@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <exception>
 #include "BinaryData.h"
 #include "Product.h"
 #include "ConsoleExtension.h"
@@ -21,8 +22,7 @@ void BinaryDataService<T>::saveToBinary(const std::vector<T>& data)
 {
 	std::ofstream file(_filename, std::ios::binary);
 	if (!file.is_open()) {
-		throw std::exception("Файл " + _filename + " не может быть открыт");
-		return;
+		throw std::invalid_argument("Файл " + _filename + " не может быть открыт");
 	}
 	size_t sizeData = data.size();
 	file.write((char*)&sizeData, sizeof(sizeData));
@@ -42,15 +42,15 @@ void BinaryDataService<T>::loadFromBinary(std::vector<T>& data)
 	}
 	size_t sizeData;
 	file.read((char*)&sizeData, sizeof(sizeData));
-	if (sizeData == NULL) {
-		throw std::runtime_error("Невозможно загрузить файл " + _filename);
+	if (sizeData > 0) {
+		std::vector<T> dataForLoad;
+		for (size_t i = 0; i < sizeData; i++) {
+			T tempItemData;
+			tempItemData.fromBinary(file);
+			dataForLoad.push_back(tempItemData);
+		}
+		data = dataForLoad;
 	}
-	std::vector<T> dataForLoad;
-	for (size_t i = 0; i < sizeData; i++) {
-		T tempItemData;
-		tempItemData.fromBinary(file);
-		dataForLoad.push_back(tempItemData);
-	}
-	data = dataForLoad;
+	else { throw std::runtime_error("Невозможно загрузить файл " + _filename); }
 	file.close();
 }
