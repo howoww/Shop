@@ -24,7 +24,7 @@ void CSVDataService<T>::exportToCSV(const std::vector<T>& data, const std::strin
 		}
 		std::ofstream file(filepath + ".csv");
 		if (!file.is_open()) {
-			throw std::exception("Файл не может быть открыт");
+			throw std::exception("Файл " + filepath + " не может быть открыт");
 		}
 		file << data[0].getCSVHeader(_separator) << std::endl;
 		for (const auto& value : data) {
@@ -38,7 +38,7 @@ template <typename T> requires std::is_base_of_v<CSVData, T>
 void CSVDataService<T>::importFromCSV(std::vector<T>& data, const std::string& filepath) {
 		std::ifstream file(filepath + ".csv");
 		if (!file.is_open()) {
-			throw std::invalid_argument("Файл не может быть открыт");
+			throw std::invalid_argument("Файл " + filepath + " не может быть открыт");
 		}
 		std::string lineCSV;
 		T tempItemData;

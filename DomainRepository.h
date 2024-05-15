@@ -39,8 +39,13 @@ public:
 template<class Domain>
 DomainRepository<Domain>::DomainRepository(const std::string& filename)
 {
-	BinaryDataService<Domain> binaryDataService(filename);
-	binaryDataService.loadFromBinary(_items);
+	try {
+		BinaryDataService<Domain> binaryDataService(filename);
+		binaryDataService.loadFromBinary(_items);
+	}
+	catch (const std::exception& e) {
+		ConsoleExtension::printError(e.what());
+	}
 	_filename = filename;
 }
 
