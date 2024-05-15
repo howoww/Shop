@@ -24,21 +24,17 @@ void MenuView::execute()
 				flag = false;
 			}
 			else {
-				//Отображение подменю	
 				system("cls");
 				_menus[select].execute();
-			
 			}
 		}
 		else {
-			//Выполнение действия
 			_action();
 			flag = false;
 		}
 		system("cls");
 	}
 }
-
 
 void MenuView::printMenu() {
 	if (this->_action == nullptr) {

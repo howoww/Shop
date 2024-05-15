@@ -53,5 +53,4 @@ void BinaryDataService<T>::loadFromBinary(std::vector<T>& data)
 		}
 		data = dataForLoad;
 		file.close();
-	
 }

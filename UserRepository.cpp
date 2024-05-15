@@ -6,7 +6,7 @@ UserRepository::UserRepository(const std::string& filename) : DomainRepository(f
 		_items.push_back(User("Администратор", "admin", "admin", true));
 }
 
-User& UserRepository::getUserForAuth(const std::string& login, const std::string& password)
+const User& UserRepository::getUserForAuth(const std::string& login, const std::string& password)
 {
 	for (int i = 0; i < _items.size(); i++)
 		if (_items[i].Equals(login, password)) return _items[i];

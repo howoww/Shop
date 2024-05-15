@@ -1,140 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="App" Collapsed="true">
-    <Position X="17.25" Y="2.5" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="App">
+    <Position X="15.75" Y="10.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>App.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Domain" Collapsed="true">
-    <Position X="10" Y="3.75" Width="1.5" />
+  <Class Name="Domain">
+    <Position X="8.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAACEAAAAAAAAAACBAAAAAAgAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Product" Collapsed="true">
-    <Position X="10" Y="5.25" Width="1.5" />
+  <Class Name="Product">
+    <Position X="6" Y="8.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>ABACICEIgCiAFAAACAIAAAAAAAAIAABAAIAEAAAAAAA=</HashCode>
       <FileName>Product.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="User" Collapsed="true">
-    <Position X="12.25" Y="5.25" Width="1.5" />
+  <Class Name="User">
+    <Position X="8" Y="8.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAQBICEQAAEAAAEAgAAIAAACAAAIAABAAAAEIAAAIIA=</HashCode>
       <FileName>User.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DomainRepository&lt;Domain&gt;" Collapsed="true">
-    <Position X="10" Y="6.5" Width="1.5" />
+  <Class Name="DomainRepository&lt;Domain&gt;">
+    <Position X="10" Y="9" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAASAAAAAARAAFCAAAAAABIgAAAAAAAAAAIAAAA=</HashCode>
       <FileName>DomainRepository.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ProductRepository" Collapsed="true">
-    <Position X="8.75" Y="7.75" Width="1.5" />
+  <Class Name="ProductRepository">
+    <Position X="12.75" Y="7.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAFAAAAAAAA=</HashCode>
       <FileName>ProductRepository.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="UserRepository" Collapsed="true">
-    <Position X="11" Y="7.75" Width="1.5" />
+  <Class Name="UserRepository">
+    <Position X="13.5" Y="10.25" Width="2" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAAAAACAAQAAAAAgAAIAAAAAAAAAAAA=</HashCode>
       <FileName>UserRepository.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CSVData" Collapsed="true">
-    <Position X="13" Y="4" Width="1.5" />
+  <Class Name="CSVData">
+    <Position X="6.25" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAiAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CSVData.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CSVDataService&lt;T&gt;" Collapsed="true">
-    <Position X="17.25" Y="3.5" Width="1.5" />
+  <Class Name="CSVDataService&lt;T&gt;">
+    <Position X="6.25" Y="4.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAIAABAAAAAAAA=</HashCode>
       <FileName>CSVDataService.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BinaryData" Collapsed="true">
-    <Position X="10" Y="2.5" Width="1.5" />
+  <Class Name="BinaryData">
+    <Position X="8.25" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BinaryData.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BinaryDataService&lt;T&gt;" Collapsed="true">
-    <Position X="20.75" Y="2.5" Width="1.5" />
+  <Class Name="BinaryDataService&lt;T&gt;">
+    <Position X="6.25" Y="3" Width="1.75" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAAQAACAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>BinaryDataService.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StringExtension" Collapsed="true">
-    <Position X="17.25" Y="4.5" Width="1.5" />
+  <Class Name="StringExtension">
+    <Position X="8.25" Y="3" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StringExtension.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VectorExtension" Collapsed="true">
-    <Position X="20.75" Y="4.5" Width="1.5" />
+  <Class Name="VectorExtension">
+    <Position X="10.25" Y="3" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>VectorExtension.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConsoleExtension" Collapsed="true">
-    <Position X="15.5" Y="3.5" Width="1.5" />
+  <Class Name="ConsoleExtension">
+    <Position X="10" Y="6.5" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="ConsoleExtension::Colors" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ConsoleExtension.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEACAAAAAAAQAAAAIACAAAAAAAIAAA=</HashCode>
       <FileName>ConsoleExtension.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ProductController" Collapsed="true">
-    <Position X="15.5" Y="4.5" Width="1.5" />
+  <Class Name="ProductController">
+    <Position X="15" Y="7.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAIAAQAgAAAAAAAAAIEEAAAAAAAABAIAABAAA=</HashCode>
       <FileName>ProductController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="UserController" Collapsed="true">
-    <Position X="19" Y="4.5" Width="1.5" />
+  <Class Name="UserController">
+    <Position X="15.25" Y="4.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAACAAAgAAAAAAAAAAAAAAIAEAAAQAEAAAAAIAAAAAQ=</HashCode>
       <FileName>UserController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AuthorizationController" Collapsed="true">
-    <Position X="19" Y="2.5" Width="1.5" />
+  <Class Name="AuthorizationController">
+    <Position X="12.75" Y="4.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAoAAAAAAEAAAAAAAAAAAAAAAgAAAAAABEAEgA=</HashCode>
       <FileName>AuthorizationController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AdminController" Collapsed="true">
-    <Position X="15.5" Y="2.5" Width="1.5" />
+  <Class Name="AdminController">
+    <Position X="16.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAYAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>AdminController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DefaultUserController" Collapsed="true">
-    <Position X="19" Y="3.5" Width="1.5" />
+  <Class Name="DefaultUserController">
+    <Position X="13.5" Y="2.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAYAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DefaultUserController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MenuView" Collapsed="true">
-    <Position X="20.75" Y="3.5" Width="1.5" />
+  <Class Name="MenuView">
+    <Position X="10.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEgAAAAAAIAAAAAAACgCAAAAA=</HashCode>
       <FileName>MenuView.h</FileName>

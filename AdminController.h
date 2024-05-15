@@ -11,7 +11,7 @@ private:
 public:
 	AdminController() : _menuView("Главное меню", std::vector<MenuView>{
 		MenuView("Пользователи", std::vector<MenuView>{
-			MenuView("Список пользователей", [&]() {_userController.displayUsers(); system("pause"); }),
+			MenuView("Список пользователей", [&]() {_userController.displayUsers();  }),
 				MenuView("Поиск", std::vector<MenuView>{
 				MenuView("Поиск по ID", [&]() { _userController.searchUsers<int>(&User::getId); }),
 				MenuView("Поиск по имени", [&]() {_userController.searchUsers<std::string>(&User::getName); }),
@@ -26,7 +26,7 @@ public:
 			})
 		}),
 			MenuView("Товары", std::vector<MenuView>{
-			MenuView("Список товаров", [&]() {_productController.displayProducts(); system("pause"); }),
+			MenuView("Список товаров", [&]() {_productController.displayProducts(); }),
 				MenuView("Поиск", std::vector<MenuView>{
 				MenuView("Поиск по ID", [&]() { _productController.searchProducts<int>(&Product::getId); }),
 					MenuView("Поиск по наименованию", [&]() {_productController.searchProducts<std::string>(&Product::getName); }),

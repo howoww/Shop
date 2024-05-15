@@ -8,7 +8,7 @@ void ProductController::displayProducts(const std::vector<Product>& products)
 		std::cout << "Список пуст" << std::endl;
 		return;
 	}
-	std::cout << "ID" << std::setw(5) << "Наименование" << std::setw(25) << "Категория" << std::setw(20) << "Марка" << std::setw(20) << "Цена" << std::setw(10) << std::endl;
+	std::cout << std::left << std::setw(5) << "ID" << std::setw(25) << "Наименование" << std::setw(20) << "Категория" << std::setw(20) << "Марка" << std::setw(10) << "Цена" << std::endl;
 	std::cout << std::left << std::setfill('-') << std::setw(80) << "" << std::setfill(' ') << std::endl;
 	for (int i = 0; i < products.size(); i++) {
 		products[i].toTableLine();
@@ -88,6 +88,7 @@ void ProductController::displayProducts()
 {
 	const std::vector<Product>& products = _productRepository.getAll();
 	displayProducts(products);
+	system("pause");
 }
 
 void ProductController::importFromCSV()

@@ -93,5 +93,6 @@ void UserController::displayUsers()
 {
 	const std::vector<User>& users = _userRepository.getAll();
 	displayUsers(users);
+	system("pause");
 }
 

@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <sstream>
 #include "BinaryData.h"
 class Domain : public BinaryData
 {
@@ -19,7 +18,6 @@ public:
 	// Унаследовано через BinaryData
 	void toBinary(std::ofstream& outFile) const override;
 	void fromBinary(std::ifstream& inFile) override;
-
 
 };
 

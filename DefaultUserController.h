@@ -9,7 +9,7 @@ private:
 public:
 	DefaultUserController() : _menuView("Главное меню", std::vector<MenuView>{
 		MenuView("Товары", std::vector<MenuView>{
-			MenuView("Список товаров", [&]() {_productController.displayProducts(); system("pause"); }),
+			MenuView("Список товаров", [&]() {_productController.displayProducts();  }),
 				MenuView("Поиск", std::vector<MenuView>{
 				MenuView("Поиск по ID", [&]() { _productController.searchProducts<int>(&Product::getId); }),
 					MenuView("Поиск по наименованию", [&]() {_productController.searchProducts<std::string>(&Product::getName); }),
