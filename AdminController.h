@@ -17,7 +17,7 @@ public:
 				MenuView("Поиск по имени", [&]() {_userController.searchUsers<std::string>(&User::getName); }),
 				MenuView("Поиск по логину", [&]() {_userController.searchUsers<std::string>(&User::getLogin); })}),
 				MenuView("Добавить пользователя", [&]() { _userController.addUser(); }),
-				MenuView("Изменть пользователя", [&]() {_userController.editUser(); }),
+				MenuView("Изменить пользователя", [&]() {_userController.editUser(); }),
 				MenuView("Удалить пользователя", [&]() {_userController.deleteUser(); }),
 				MenuView("Сортировка", std::vector<MenuView>{
 				MenuView("Сортировать по ID", [&]() {_userController.sort<int>(&User::getId); }),
@@ -35,7 +35,7 @@ public:
 					MenuView("Поиск по цене", [&]() {_productController.searchProducts<double>(&Product::getCost); })
 			}),
 				MenuView("Добавить товар", [&]() {_productController.addProduct(); }),
-				MenuView("Изменть товар", [&]() {_productController.editProduct(); }),
+				MenuView("Изменить товар", [&]() {_productController.editProduct(); }),
 				MenuView("Удалить товар", [&]() {_productController.deleteProduct(); }),
 				MenuView("Импорт из Csv", [&]() {_productController.importFromCSV(); }),
 				MenuView("Экспорт в Csv", [&]() {_productController.exportToCSV(); }),

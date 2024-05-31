@@ -7,7 +7,8 @@ const std::string App::PRODUCTS_FILENAME = "products";
 int main() {
 	setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	SetConsoleOutputCP(1251); 
+	system("cls");
 	AuthorizationController authController;
 	return 0;
 }

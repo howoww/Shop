@@ -7,6 +7,7 @@ AuthorizationController::AuthorizationController() :_userRepository(App::USERS_F
 				AdminController adminController;
 			else
 				DefaultUserController userController;
+			_isLoggedIn = false;
 		}
 		}),
 		MenuView("Зарегистрироваться", [&]() {

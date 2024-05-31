@@ -14,8 +14,7 @@ private:
 public:
 	BinaryDataService(const std::string& filename) : _filename(filename + ".bin") {};
 	void saveToBinary(const std::vector<T>& data);
-	void loadFromBinary(std::vector<T>& data);
-};
+	void loadFromBinary(std::vector<T>& data);};
 
 template<typename T> requires std::is_base_of_v<BinaryData, T>
 void BinaryDataService<T>::saveToBinary(const std::vector<T>& data)
@@ -27,19 +26,16 @@ void BinaryDataService<T>::saveToBinary(const std::vector<T>& data)
 	size_t sizeData = data.size();
 	file.write((char*)&sizeData, sizeof(sizeData));
 	for (size_t i = 0; i < sizeData; i++) {
-		data[i].toBinary(file);
-	}
+		data[i].toBinary(file);}
 	ConsoleExtension::printTextWithColor("Данные сохранены в " + _filename, ConsoleExtension::Colors::Green);
-	file.close();
-}
+	file.close();}
 
 template<typename T> requires std::is_base_of_v<BinaryData, T>
 void BinaryDataService<T>::loadFromBinary(std::vector<T>& data)
 {
 	std::ifstream file(_filename, std::ios::binary);
 	if (!file.is_open()) {
-		throw std::invalid_argument("Файл " + _filename + " не может быть открыт");
-	}
+		throw std::invalid_argument("Файл " + _filename + " не может быть открыт");}
 	size_t sizeData;
 	file.read((char*)&sizeData, sizeof(sizeData));
 	if (sizeData > 0) {
@@ -52,5 +48,4 @@ void BinaryDataService<T>::loadFromBinary(std::vector<T>& data)
 		data = dataForLoad;
 	}
 	else { throw std::runtime_error("Невозможно загрузить файл " + _filename); }
-	file.close();
-}
+	file.close();}
